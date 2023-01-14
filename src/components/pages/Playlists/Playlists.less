@@ -1,0 +1,143 @@
+@import "../../App/Colors.less";
+
+.playlists {
+  &>* {
+    margin: 5rem 20rem;
+  }
+}
+
+.playlistList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.playlistItem {
+  position: relative;
+  margin: 2.5rem;
+  cursor: pointer;
+  h3{ 
+    position: absolute;
+    margin: 5rem;
+    bottom: 0;
+  }
+  .overlay {
+    transition: background-image 0.5s linear; 
+    position: absolute;
+    background-image: linear-gradient(5deg, fade(@red,80%) 20%, fade(@red,0%) 25%);
+    width: 100%;
+    height: 100%;
+    &:hover{
+      background-image: linear-gradient(5deg, fade(@red,80%) 20%, fade(@red,10%) 25%);
+    }
+  }
+  .images {
+    position: relative;
+    width: 200rem;
+    height: 200rem;
+    margin: 0;
+    overflow: hidden;
+    img {
+      position: absolute;
+      width: ~"calc(50%)";
+      height: ~"calc(50%)";
+      float: left;
+      &:nth-child(2n-1) {
+        left: 0;
+      }
+      &:nth-child(2n) {
+        right: 0;
+      }
+      &:nth-child(-n+2) {
+        top: 0;
+      }
+      &:nth-child(n+3) {
+        bottom: 0;
+      }
+    }
+  }
+}
+
+.playingBar {
+  height: 75rem;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  background: @white;
+  color:black;
+  display: flex;
+  justify-content: center;
+  >* {
+    height: 100%;
+  }
+  .nowPlaying {
+    position: absolute;
+    left: 0;
+  }
+  .controls {
+    margin: auto;
+    .icon {
+      height: 100%;
+      width: 30rem;
+      &.play {
+				width: 50rem;
+				margin: 0 10rem;
+      }
+    }
+  }
+  .device {
+    position: absolute;
+    right: 0;
+    float: right;
+    margin-right: 50rem;
+    .currentDevice {
+      cursor: pointer
+    }
+    .deviceIcon {
+      float: left;
+      width: 30rem;
+      height: inherit;
+      margin-right: 5rem;
+    }
+    h4,
+    label {
+      margin-left: 35rem;
+      display: block;
+    }
+    h4 {
+      margin-top: 17rem;
+      margin-bottom: 0;
+      white-space: nowrap;
+    }
+    .devices {
+      position: absolute;
+      bottom: 75rem;
+      width: 100%;
+      border: 1px solid #000;
+      .refreshIcon {
+        float: right;
+        margin-left: 5rem;
+      }
+      article {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        &.item:hover {
+          cursor: pointer;
+          background: #D3D3D3
+        }
+      }
+    }
+  }
+}
+
+header {
+  position: relative;
+  text-align: center;
+  .newPlaylist {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
