@@ -50,6 +50,8 @@
     "@craco/craco": "^5.9.0",
     "@craco/types": "^7.0.0",
     "@types/webpack": "^5.28.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-prettier": "^4.2.1",
     "ts-loader": "^9.4.2"
   }
 }
