@@ -1,27 +1,35 @@
+// eslint-disable-next-line no-undef
 module.exports = {
-  env: {
-    browser: true,
-    es2021: true
-  },
+  // env: {
+  //   browser: true,
+  //   es2021: true
+  // },
   extends: [
+    'eslint:recommended',
     'plugin:react/recommended',
-    'standard-with-typescript',
-    'airbnb',
+    'plugin:@typescript-eslint/recommended',
     'plugin:jsx-a11y/recommended',
     'prettier',
-    'prettier/react'
+    // 'airbnb',
+    // 'airbnb-typescript',
   ],
   plugins: [
     'react',
+    '@typescript-eslint',
     'jsx-a11y',
     'prettier'
   ],
-  overrides: [
-  ],
   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module'
+    // ecmaVersion: 'latest',
+    // sourceType: 'module',
+    // project: './tsconfig.json'
+  },
+  settings: {
+    'import/resolver': {
+      typescript: {},
+    },
   },
   rules: {
-  }
-}
+    'react/react-in-jsx-scope': 'off',
+  },
+};

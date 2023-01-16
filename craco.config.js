@@ -3,7 +3,7 @@
 module.exports = {
   eslint: {
     configure: {
-      mode: 'file'
+      mode:'file'
     }
   }
 }

@@ -44,3 +44,23 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## Setup Users + Data Management (AWS Amplify)
+
+https://docs.amplify.aws/start/getting-started/installation/q/integration/react/
+1. Setup apmlify cli `npm install -g @aws-amplify/cli`
+
+2. Configure Amplify `amplify configure`
+
+Include Region `ap-southeast-2`
+(If it does nothing, install Rosetta `softwareupdate --install-rosetta`)
+
+1. Initialize amplify for the project `amplify init`
+
+2. Add npm package `npm install aws-amplify`
+
+3. Add a GraphQL api to amplify `amplify add api`
+
+4. Add Auth to amplify `amplify add auth`
+
+
