@@ -13,7 +13,7 @@ export const AuthContextProvider = ({children}: {children?: React.ReactNode}) =>
 
   useEffect(() => {
     Auth.currentCredentials().then(c => setAuthModel(m => ({...(m as AuthModel), authenticated: c.authenticated })));
-    Auth.currentUserInfo().then(i => setAuthModel(m => ({...(m as AuthModel), name: i?.name?? 'Coolio Person' })));
+    Auth.currentUserInfo().then(i => setAuthModel(m => ({...(m as AuthModel), name: i?.attributes?.name })));
   }, [])
 
   return (

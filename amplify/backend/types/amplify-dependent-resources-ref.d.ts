@@ -7,10 +7,9 @@ export type AmplifyDependentResourcesAttributes = {
     }
   },
   "auth": {
-    "atmos31808caf": {
+    "atmos": {
       "AppClientID": "string",
       "AppClientIDWeb": "string",
-      "GoogleWebClient": "string",
       "HostedUIDomain": "string",
       "IdentityPoolId": "string",
       "IdentityPoolName": "string",

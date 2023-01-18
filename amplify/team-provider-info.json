@@ -18,7 +18,8 @@
       "auth": {
         "atmos31808caf": {
           "googleClientId": "728917661766-ng0tjous5hsdkj91if89p994fd9vt0m8.apps.googleusercontent.com"
-        }
+        },
+        "atmos": {}
       }
     }
   }

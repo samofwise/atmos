@@ -2,11 +2,99 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const onCreatePlaylistGroup = /* GraphQL */ `
+  subscription OnCreatePlaylistGroup(
+    $filter: ModelSubscriptionPlaylistGroupFilterInput
+  ) {
+    onCreatePlaylistGroup(filter: $filter) {
+      id
+      name
+      Playlists {
+        items {
+          id
+          name
+          plays
+          playlistGroupId
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdatePlaylistGroup = /* GraphQL */ `
+  subscription OnUpdatePlaylistGroup(
+    $filter: ModelSubscriptionPlaylistGroupFilterInput
+  ) {
+    onUpdatePlaylistGroup(filter: $filter) {
+      id
+      name
+      Playlists {
+        items {
+          id
+          name
+          plays
+          playlistGroupId
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeletePlaylistGroup = /* GraphQL */ `
+  subscription OnDeletePlaylistGroup(
+    $filter: ModelSubscriptionPlaylistGroupFilterInput
+  ) {
+    onDeletePlaylistGroup(filter: $filter) {
+      id
+      name
+      Playlists {
+        items {
+          id
+          name
+          plays
+          playlistGroupId
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
 export const onCreatePlaylist = /* GraphQL */ `
   subscription OnCreatePlaylist($filter: ModelSubscriptionPlaylistFilterInput) {
     onCreatePlaylist(filter: $filter) {
       id
       name
+      plays
+      songs {
+        id
+        name
+      }
+      playlistGroupId
+      PlaylistGroup {
+        id
+        name
+        Playlists {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      nextPlaylists {
+        id
+        name
+      }
       createdAt
       updatedAt
     }
@@ -17,6 +105,25 @@ export const onUpdatePlaylist = /* GraphQL */ `
     onUpdatePlaylist(filter: $filter) {
       id
       name
+      plays
+      songs {
+        id
+        name
+      }
+      playlistGroupId
+      PlaylistGroup {
+        id
+        name
+        Playlists {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      nextPlaylists {
+        id
+        name
+      }
       createdAt
       updatedAt
     }
@@ -27,6 +134,25 @@ export const onDeletePlaylist = /* GraphQL */ `
     onDeletePlaylist(filter: $filter) {
       id
       name
+      plays
+      songs {
+        id
+        name
+      }
+      playlistGroupId
+      PlaylistGroup {
+        id
+        name
+        Playlists {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      nextPlaylists {
+        id
+        name
+      }
       createdAt
       updatedAt
     }

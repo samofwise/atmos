@@ -12,7 +12,7 @@ const AuthSection = () => {
   return auth !== null ? (
     !auth.authenticated ? 
     <Typography variant="h6" component="div" onClick={clickSignIn}>Sign In</Typography>
-    :<Typography variant="h6" component="div">{`Welcome CoolPerson`}</Typography>
+    :<Typography variant="subtitle2" component="div">{`Welcome ${auth.name}`}</Typography>
     
   ) : null
 }

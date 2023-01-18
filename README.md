@@ -63,4 +63,6 @@ Include Region `ap-southeast-2`
 
 4. Add Auth to amplify `amplify add auth`
 
+5. Make sure you add name as a required attribute in amplify auth
+
 

@@ -7,13 +7,10 @@
 		"jsx": "react",
 		"sourceMap": true,
 		"allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
+		"esModuleInterop": true,
 		"skipDefaultLibCheck": true,
 		"strict": true,
-		"strictNullChecks": false,
-		"types": [
-			"webpack-env"
-		]
+		"strictNullChecks": false
 	},
 	"exclude": [
 		"obj",

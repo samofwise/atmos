@@ -24,7 +24,7 @@ const Page = styled('article')({
   textAlign:'center'
 })
 
-const SectionOne = styled('section')(({theme}) =>  ({
+const SectionOne = styled('section')(({theme}) => ({
   display:'flex',
   alignItems:'center',
   overflow:'hidden',

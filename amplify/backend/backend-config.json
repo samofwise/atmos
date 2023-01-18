@@ -4,10 +4,15 @@
       "dependsOn": [],
       "output": {
         "authConfig": {
-          "additionalAuthenticationProviders": [],
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AWS_IAM"
+            }
+          ],
           "defaultAuthentication": {
             "apiKeyConfig": {
-              "apiKeyExpirationDays": 7
+              "apiKeyExpirationDays": 30,
+              "description": "api key description"
             },
             "authenticationType": "API_KEY"
           }
@@ -18,7 +23,7 @@
     }
   },
   "auth": {
-    "atmos31808caf": {
+    "atmos": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {
@@ -31,7 +36,8 @@
           "passwordPolicyMinLength": 8
         },
         "signupAttributes": [
-          "EMAIL"
+          "EMAIL",
+          "NAME"
         ],
         "socialProviders": [
           "GOOGLE"
