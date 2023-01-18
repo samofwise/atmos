@@ -1,14 +1,14 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom'
-import HeaderNav from './HeaderNav/HeaderNav'
+import React from 'react';
+import { Outlet } from 'react-router-dom';
+import HeaderNav from './HeaderNav/HeaderNav';
 
-const Root = () => {
+function Root() {
   return (
     <>
       <HeaderNav />
       <Outlet />
     </>
-  )
+  );
 }
 
-export default Root
+export default Root;

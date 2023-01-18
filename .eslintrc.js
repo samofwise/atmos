@@ -10,8 +10,8 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:jsx-a11y/recommended',
     'prettier',
-    // 'airbnb',
-    // 'airbnb-typescript',
+    'airbnb',
+    'airbnb-typescript',
   ],
   plugins: [
     'react',
@@ -37,6 +37,8 @@ module.exports = {
     'react/display-name': 'off',
     'no-irregular-whitespace': 'error',
     'no-multi-spaces': 'error',
+    '@typescript-eslint/no-use-before-define': 'off',
+    'react/jsx-props-no-spreading': 'off',
   },
   overrides: [
     // {
