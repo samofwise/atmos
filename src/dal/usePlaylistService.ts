@@ -4,6 +4,8 @@ import { createPlaylist as create, updatePlaylist as update, deletePlaylist as d
 import { getPlaylist as getPlaylistQuery, listPlaylists } from '../graphql/queries';
 
 const usePlaylistService = () => {
+  // const { authenticated } = useContext(AuthContext);
+
   const getPlaylists = () => API.graphql({
     query: listPlaylists,
   });

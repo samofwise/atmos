@@ -31,7 +31,7 @@ function Playlists() {
         </IconButton>
       </Box>
       <Box sx={{ display: 'flex', padding: '0 10px', width: '100%' }}>
-        {(playlistGroups.length ? playlistGroups : tempPlaylistGroups).map((g) => (
+        {(playlistGroups?.length ? playlistGroups : tempPlaylistGroups).map((g) => (
           <Card key={g.id} sx={{ width: 250, height: 250, margin: '10px' }}>
             <CardContent>
               <Typography gutterBottom variant="h5" component="h2">

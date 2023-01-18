@@ -1,4 +1,4 @@
-import { createContext, useMemo, useState } from "react";
+import { createContext, useMemo, useState } from 'react';
 
 interface SignInModel {
   showSignIn: boolean,
@@ -7,21 +7,22 @@ interface SignInModel {
 
 const ShowSignInContext = createContext<SignInModel>((null as unknown) as SignInModel);
 
-export const ShowSignInProvider = ({children}: {children?: React.ReactNode}) => {
+export function ShowSignInProvider({ children }: { children?: React.ReactNode }) {
   const [showSignIn, setshowSignIn] = useState(false);
-  const value = useMemo(()=> ({showSignIn, setshowSignIn}), [showSignIn])
+  const value = useMemo(() => ({ showSignIn, setshowSignIn }), [showSignIn]);
 
   return (
     <ShowSignInContext.Provider value={value}>
       {children}
-    </ShowSignInContext.Provider>)
+    </ShowSignInContext.Provider>
+  );
 }
 
-export default ShowSignInContext
+export default ShowSignInContext;
 
 // const Component = (props) => {
 // const Component = (props) => {
-  // return <div />;
+// return <div />;
 // };
 
 // arrow function for named component

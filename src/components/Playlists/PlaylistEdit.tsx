@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
-const PlaylistEdit = () => {
+function PlaylistEdit() {
   return (
     <div>PlaylistEdit</div>
-  )
+  );
 }
 
-export default PlaylistEdit
+export default PlaylistEdit;

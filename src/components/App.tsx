@@ -13,8 +13,7 @@ import CommunityPlaylists from './CommunityPlaylists/CommunityPlaylists';
 import Root from './Root';
 
 function App() {
-  const auth = useContext(AuthContext);
-  const { authenticated } = auth ?? {};
+  const { authenticated } = useContext(AuthContext);
 
   const router = createBrowserRouter([
     {

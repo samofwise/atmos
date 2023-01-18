@@ -41,10 +41,10 @@ module.exports = {
     'react/jsx-props-no-spreading': 'off',
   },
   overrides: [
-    // {
-    //   files: ["*.js"],
-    //   processor: "@graphql-eslint/graphql"
-    // },
+    {
+      files: ['graphql/*.ts'],
+      processor: '@graphql-eslint/graphql',
+    },
     {
       files: ['*.graphql'],
       parser: '@graphql-eslint/eslint-plugin',
