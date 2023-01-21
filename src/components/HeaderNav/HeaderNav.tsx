@@ -1,9 +1,10 @@
-import { AppBar, Toolbar, IconButton } from '@mui/material';
+import { AppBar, Toolbar, IconButton, Button } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Nav from './Nav';
-import AuthSection from './SignIn';
-import AuthContext from '../contexts/AuthContext';
+import SignIn from './SignIn';
+import AuthContext from '../../contexts/AuthContext';
 import AppName from '../common/AppName';
 
 function HeaderNav() {
@@ -21,8 +22,10 @@ function HeaderNav() {
             <MenuIcon />
           </IconButton>
           )}
-          <AppName variant="h6" component="h1" sx={{ flexGrow: 1 }} />
-          <AuthSection />
+          <Button component={Link} to="/" disableRipple sx={{ minHeight: 'inherit' }}>
+            <AppName variant="h6" component="h1" />
+          </Button>
+          <SignIn />
         </Toolbar>
       </AppBar>
       <Nav {...{ navShow, setNavShow }} />

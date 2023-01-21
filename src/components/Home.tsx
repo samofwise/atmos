@@ -3,9 +3,11 @@ import { styled, Mixins } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import SignIn from './Auth/Authenticator';
 import AppName from './common/AppName';
-import ShowSignInContext from './contexts/ShowSignInContext';
+import ShowSignInContext from '../contexts/ShowSignInContext';
+import useSpotifyReceiver from '../spotify-web-api-react/useSpotifyReceiver';
 
 function Home() {
+  useSpotifyReceiver();
   const { showSignIn: signIn } = useContext(ShowSignInContext);
   return signIn ? (<SignIn />)
     : (
@@ -21,9 +23,7 @@ function Home() {
     );
 }
 
-const Page = styled('article')({
-  textAlign: 'center',
-});
+const Page = styled('article')({ textAlign: 'center' });
 
 const SectionOne = styled('section')(({ theme }) => ({
   display: 'flex',
@@ -34,9 +34,7 @@ const SectionOne = styled('section')(({ theme }) => ({
   position: 'relative',
 }));
 
-const StyledTitle = styled(AppName)({
-  fontSize: 100,
-});
+const StyledTitle = styled(AppName)({ fontSize: 100 });
 
 const Water = styled('div')({
   position: 'absolute',

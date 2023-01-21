@@ -8,8 +8,6 @@ function AppName({ component, ...props }:Props) {
   return <Typography component={component ?? 'h1'} {...props}>atmos</Typography>;
 }
 
-const Styled = styled(AppName)({
-  fontFamily: 'Comfortaa',
-});
+const Styled = styled(AppName)({ fontFamily: 'Comfortaa', color: '#fff', textTransform: 'lowercase' });
 
 export default Styled;

@@ -1,7 +1,15 @@
+// TODO: Fix Later
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { GraphQLResult } from '@aws-amplify/api-graphql';
 import { API } from 'aws-amplify';
 import {
-  CreatePlaylistGroupInput, GetPlaylistGroupQuery, ListPlaylistGroupsQuery,
+  CreatePlaylistGroupInput,
+  CreatePlaylistGroupMutation,
+  GetPlaylistGroupQuery,
+  ListPlaylistGroupsQuery,
+  PlaylistGroup,
   UpdatePlaylistGroupInput,
+  UpdatePlaylistGroupMutation,
 } from '../api/api';
 import { createPlaylistGroup as create, updatePlaylistGroup as update, deletePlaylistGroup as deleteMutation } from '../graphql/mutations';
 import { listPlaylistGroups, getPlaylistGroup as getPlaylistGroupQuery } from '../graphql/queries';
@@ -9,34 +17,29 @@ import { listPlaylistGroups, getPlaylistGroup as getPlaylistGroupQuery } from '.
 const usePlaylistGroupService = () => {
   // useContext get is not authed and use local storage
 
-  const getPlaylistGroups = () => API.graphql({
+  const getPlaylistGroups = async () => ((await API.graphql({
     query: listPlaylistGroups,
-  }) as Promise<ListPlaylistGroupsQuery>;
+  // eslint-disable-next-line max-len
+  }) as GraphQLResult<ListPlaylistGroupsQuery>).data?.listPlaylistGroups?.items ?? []) as PlaylistGroup[];
 
-  const getPlaylistGroup = (id: string) => API.graphql({
+  const getPlaylistGroup = async (id: string) => ((await API.graphql({
     query: getPlaylistGroupQuery,
     variables: { id },
-  }) as Promise<GetPlaylistGroupQuery>;
+  }) as GraphQLResult<GetPlaylistGroupQuery>).data?.getPlaylistGroup ?? {}) as PlaylistGroup;
 
-  const createPlaylistGroup = (input: CreatePlaylistGroupInput) => API.graphql({
+  const createPlaylistGroup = async (input: CreatePlaylistGroupInput) => (API.graphql({
     query: create,
-    variables: {
-      input,
-    },
-  });
+    variables: { input },
+  }) as GraphQLResult<CreatePlaylistGroupMutation>).data?.createPlaylistGroup as PlaylistGroup;
 
-  const updatePlaylistGroup = (input: UpdatePlaylistGroupInput) => API.graphql({
+  const updatePlaylistGroup = async (input: UpdatePlaylistGroupInput) => (await API.graphql({
     query: update,
-    variables: {
-      input,
-    },
-  });
+    variables: { input },
+  }) as GraphQLResult<UpdatePlaylistGroupMutation>).data?.updatePlaylistGroup as PlaylistGroup;
 
   const deletePlaylistGroup = (id: string) => API.graphql({
     query: deleteMutation,
-    variables: {
-      input: { id },
-    },
+    variables: { input: { id } },
   });
 
   return {

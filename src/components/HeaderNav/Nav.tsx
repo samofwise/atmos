@@ -8,8 +8,9 @@ import InboxIcon from '@mui/icons-material/Inbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { Auth } from 'aws-amplify';
 import { Logout } from '@mui/icons-material';
-import AuthContext from '../contexts/AuthContext';
+import AuthContext from '../../contexts/AuthContext';
 import NavLinkComponent from '../common/NavLinkComponent';
+import useSpotify from '../../spotify-web-api-react/useSpotify';
 
 interface Props {
   navShow: boolean;
@@ -17,9 +18,17 @@ interface Props {
 }
 
 function Nav({ navShow, setNavShow }: Props) {
-  const { authenticated } = useContext(AuthContext) ?? {};
+  const { authenticated } = useContext(AuthContext);
+  const { redirectWithImplicitGrantFlow } = useSpotify();
+
   const setNav = (state: boolean) => () => setNavShow(state);
   const signOut = () => Auth.signOut();
+
+  const navItems = [
+    { text: 'Playlists', url: '/', icon: <MailIcon /> },
+    { text: 'Community Playlists', url: '/community', icon: <InboxIcon /> },
+    { isDivider: true },
+  ].map((n, i) => ({ ...n, id: i }));
 
   return (
     <SwipeableDrawer anchor="left" open={navShow} onClose={setNav(false)} onOpen={setNav(true)}>
@@ -29,18 +38,13 @@ function Nav({ navShow, setNavShow }: Props) {
             // eslint-disable-next-line react/jsx-props-no-spreading
             'isDivider' in item ? <Divider key={id} /> : <NavItem key={id} {...item} />
           ))}
-          {authenticated && <SignOut icon={<Logout />} text="Sign Out" onClick={signOut} />}
+          {authenticated && <SignOut icon={<Logout />} text="Connect to Spotify" onClick={redirectWithImplicitGrantFlow} />}
+          {authenticated && <NavItem icon={<Logout />} text="Sign Out" onClick={signOut} />}
         </List>
       </Box>
     </SwipeableDrawer>
   );
 }
-
-const navItems = [
-  { text: 'Playlists', url: '/', icon: <MailIcon /> },
-  { text: 'Community Playlists', url: '/community', icon: <InboxIcon /> },
-  { isDivider: true },
-].map((n, i) => ({ ...n, id: i }));
 
 export default Nav;
 
@@ -52,9 +56,7 @@ interface NavItemProps {
   icon: JSX.Element;
 }
 
-function NavItem({
-  url, icon, text, ...props
-}: Omit<NavItemProps, 'id'> & ListItemProps) {
+function NavItem({ url, icon, text, ...props }: Omit<NavItemProps, 'id'> & ListItemProps) {
   return (
     <ListItem {...props} disablePadding>
       <ListItemButton component={NavLinkComponent} to={url || ''}>
@@ -65,6 +67,4 @@ function NavItem({
   );
 }
 
-const SignOut = styled(NavItem)({
-  marginTop: 'auto',
-});
+const SignOut = styled(NavItem)({ marginTop: 'auto' });

@@ -1,17 +1,25 @@
-import { Typography } from '@mui/material';
+import { Button, styled, Typography } from '@mui/material';
 import { useContext } from 'react';
-import ShowSignInContext from '../contexts/ShowSignInContext';
-import AuthContext from '../contexts/AuthContext';
+import ShowSignInContext from '../../contexts/ShowSignInContext';
+import AuthContext from '../../contexts/AuthContext';
 
-function AuthSection() {
+function SignIn(props: any) {
   const { setshowSignIn: setsignIn } = useContext(ShowSignInContext);
   const { authenticated, name } = useContext(AuthContext);
 
   const clickSignIn = () => setsignIn(true);
 
-  if (authenticated) return <Typography variant="subtitle2" component="div">{`Welcome ${name}`}</Typography>;
-  if (authenticated !== undefined) return <Typography variant="h6" component="div" onClick={clickSignIn}>Sign In</Typography>;
+  if (authenticated) return <Typography {...props} variant="subtitle2" component="div">{`Welcome ${name}`}</Typography>;
+  if (authenticated === undefined) return (
+    <Button {...props}>
+      <Typography variant="h6" component="span" onClick={clickSignIn}>Sign In</Typography>
+    </Button>
+  );
   return null;
 }
 
-export default AuthSection;
+const StyledSignIn = styled(SignIn)`
+  margin-left: auto
+`;
+
+export default StyledSignIn;

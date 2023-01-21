@@ -14,7 +14,31 @@ export const onCreatePlaylistGroup = /* GraphQL */ `
           id
           name
           plays
+          songs {
+            id
+            name
+            uri
+            image
+            artist
+            parentPlaylistId
+          }
+          sourcePlaylists {
+            id
+            name
+            uri
+            image
+          }
+          PlaylistGroup {
+            id
+            name
+            createdAt
+            updatedAt
+          }
           playlistGroupId
+          nextPlaylists {
+            playlistId
+            name
+          }
           createdAt
           updatedAt
         }
@@ -37,7 +61,31 @@ export const onUpdatePlaylistGroup = /* GraphQL */ `
           id
           name
           plays
+          songs {
+            id
+            name
+            uri
+            image
+            artist
+            parentPlaylistId
+          }
+          sourcePlaylists {
+            id
+            name
+            uri
+            image
+          }
+          PlaylistGroup {
+            id
+            name
+            createdAt
+            updatedAt
+          }
           playlistGroupId
+          nextPlaylists {
+            playlistId
+            name
+          }
           createdAt
           updatedAt
         }
@@ -60,7 +108,31 @@ export const onDeletePlaylistGroup = /* GraphQL */ `
           id
           name
           plays
+          songs {
+            id
+            name
+            uri
+            image
+            artist
+            parentPlaylistId
+          }
+          sourcePlaylists {
+            id
+            name
+            uri
+            image
+          }
+          PlaylistGroup {
+            id
+            name
+            createdAt
+            updatedAt
+          }
           playlistGroupId
+          nextPlaylists {
+            playlistId
+            name
+          }
           createdAt
           updatedAt
         }
@@ -80,19 +152,37 @@ export const onCreatePlaylist = /* GraphQL */ `
       songs {
         id
         name
+        uri
+        image
+        artist
+        parentPlaylistId
       }
-      playlistGroupId
+      sourcePlaylists {
+        id
+        name
+        uri
+        image
+      }
       PlaylistGroup {
         id
         name
         Playlists {
+          items {
+            id
+            name
+            plays
+            playlistGroupId
+            createdAt
+            updatedAt
+          }
           nextToken
         }
         createdAt
         updatedAt
       }
+      playlistGroupId
       nextPlaylists {
-        id
+        playlistId
         name
       }
       createdAt
@@ -109,19 +199,37 @@ export const onUpdatePlaylist = /* GraphQL */ `
       songs {
         id
         name
+        uri
+        image
+        artist
+        parentPlaylistId
       }
-      playlistGroupId
+      sourcePlaylists {
+        id
+        name
+        uri
+        image
+      }
       PlaylistGroup {
         id
         name
         Playlists {
+          items {
+            id
+            name
+            plays
+            playlistGroupId
+            createdAt
+            updatedAt
+          }
           nextToken
         }
         createdAt
         updatedAt
       }
+      playlistGroupId
       nextPlaylists {
-        id
+        playlistId
         name
       }
       createdAt
@@ -138,19 +246,37 @@ export const onDeletePlaylist = /* GraphQL */ `
       songs {
         id
         name
+        uri
+        image
+        artist
+        parentPlaylistId
       }
-      playlistGroupId
+      sourcePlaylists {
+        id
+        name
+        uri
+        image
+      }
       PlaylistGroup {
         id
         name
         Playlists {
+          items {
+            id
+            name
+            plays
+            playlistGroupId
+            createdAt
+            updatedAt
+          }
           nextToken
         }
         createdAt
         updatedAt
       }
+      playlistGroupId
       nextPlaylists {
-        id
+        playlistId
         name
       }
       createdAt

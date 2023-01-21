@@ -25,33 +25,34 @@ module.exports = {
     project: './tsconfig.json',
   },
   settings: {
-    'import/resolver': {
-      typescript: {},
-    },
-    react: {
-      version: 'detect',
-    },
+    'import/resolver': { typescript: {} },
+    react: { version: 'detect' },
   },
   rules: {
     'react/react-in-jsx-scope': 'off',
     'react/display-name': 'off',
-    'no-irregular-whitespace': 'error',
-    'no-multi-spaces': 'error',
     '@typescript-eslint/no-use-before-define': 'off',
     'react/jsx-props-no-spreading': 'off',
+    'react/require-default-props': 'off',
+    curly: ['error', 'multi'],
+    'object-curly-newline': ['error', {
+      ObjectPattern: { multiline: true },
+      ObjectExpression: { multiline: true },
+      ImportDeclaration: { multiline: true },
+      ExportDeclaration: { multiline: true },
+    }],
+    '@typescript-eslint/no-unused-vars': 'warn',
   },
   overrides: [
     {
-      files: ['graphql/*.ts'],
+      files: ['./graphql/*.ts'],
       processor: '@graphql-eslint/graphql',
     },
     {
       files: ['*.graphql'],
       parser: '@graphql-eslint/eslint-plugin',
       plugins: ['@graphql-eslint'],
-      rules: {
-        '@graphql-eslint/known-type-names': 'error',
-      },
+      rules: { '@graphql-eslint/known-type-names': 'error' },
     },
   ],
 };

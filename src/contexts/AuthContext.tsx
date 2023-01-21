@@ -8,7 +8,7 @@ interface AuthModel {
   name?: string;
 }
 
-export function AuthContextProvider({ children }: { children?: React.ReactNode }) {
+export function AuthContextProvider({ children = null }: { children?: React.ReactNode }) {
   const [authModel, setAuthModel] = useState<AuthModel>({});
 
   useEffect(() => {
