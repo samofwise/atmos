@@ -1,3 +1,22 @@
 
 Todo:
-  ☐ Figure out Data structure, Playlists with Groups, Groups with Playlists or separate
+  ☐ Initial Style Cards on home page
+  ☐ Style Edit state
+  ☐ Add Delete Option
+  ☐ Add Connect to device (just quickly)
+  ☐ Add Play Playlist
+  ☐ Add Stop
+  ☐ Display Current in bottom left
+  ☐ Add Redirect page for Spotify with redirect back
+  ☐ Figure out how to do catch all and re Auth for spotify
+  ☐ Or Check + store expire time and re Auth when close to expired, with time out thing
+
+  ☐ Fancy Style of Cards
+  ☐ Implement Sdk
+  ☐ Try to implement crossfade
+
+  ☐ Community Playlists
+  ☐ Create some Community Playlists
+  ☐ Allow Copy
+  
+

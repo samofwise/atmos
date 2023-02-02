@@ -25,7 +25,7 @@ function Nav({ navShow, setNavShow }: Props) {
   const signOut = () => Auth.signOut();
 
   const navItems = [
-    { text: 'Playlists', url: '/', icon: <MailIcon /> },
+    { text: 'Playlists', url: '/jsadhfkjasd', icon: <MailIcon /> },
     { text: 'Community Playlists', url: '/community', icon: <InboxIcon /> },
     { isDivider: true },
   ].map((n, i) => ({ ...n, id: i }));
@@ -35,11 +35,14 @@ function Nav({ navShow, setNavShow }: Props) {
       <Box sx={{ width: 'auto', height: '100%' }} role="presentation" onClick={setNav(false)} onKeyDown={setNav(false)}>
         <List sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
           {navItems.map(({ id, ...item }) => (
-            // eslint-disable-next-line react/jsx-props-no-spreading
             'isDivider' in item ? <Divider key={id} /> : <NavItem key={id} {...item} />
           ))}
-          {authenticated && <SignOut icon={<Logout />} text="Connect to Spotify" onClick={redirectWithImplicitGrantFlow} />}
-          {authenticated && <NavItem icon={<Logout />} text="Sign Out" onClick={signOut} />}
+          {true && (
+          <>
+            <SignOut icon={<Logout />} text="Connect To Spotify" onClick={redirectWithImplicitGrantFlow} />
+            <NavItem icon={<Logout />} text="Sign Out" onClick={signOut} />
+          </>
+          )}
         </List>
       </Box>
     </SwipeableDrawer>
@@ -59,7 +62,7 @@ interface NavItemProps {
 function NavItem({ url, icon, text, ...props }: Omit<NavItemProps, 'id'> & ListItemProps) {
   return (
     <ListItem {...props} disablePadding>
-      <ListItemButton component={NavLinkComponent} to={url || ''}>
+      <ListItemButton component={url ? NavLinkComponent : ListItemButton} to={url}>
         {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
         <ListItemText primary={text} />
       </ListItemButton>

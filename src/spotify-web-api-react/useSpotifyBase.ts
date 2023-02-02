@@ -30,7 +30,7 @@ const useSpotifyBase = (credentials: SpotifyCredentials) => {
         client_id: credentials.clientId,
         scope: credentials.scope,
         redirect_uri: credentials.redirectUri,
-        state: 'asdf',
+        state: window.location.href,
       },
     });
   };
@@ -38,7 +38,7 @@ const useSpotifyBase = (credentials: SpotifyCredentials) => {
   const redirectWithImplicitGrantFlow = () => {
     const url = getImplicitGrantUrl();
     // eslint-disable-next-line no-console
-    console.log(`Redirecting to ${url}`);
+    console.log(`Redirecting to ${url}`, 'implicit grant');
     window.location.href = url;
   };
 

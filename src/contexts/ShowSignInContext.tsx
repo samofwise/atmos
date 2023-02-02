@@ -19,13 +19,3 @@ export function ShowSignInProvider({ children }: { children?: React.ReactNode })
 }
 
 export default ShowSignInContext;
-
-// const Component = (props) => {
-// const Component = (props) => {
-// return <div />;
-// };
-
-// arrow function for named component
-// const Component = (props) => {
-//   return <div>{props.content}</div>;
-// };

@@ -18,6 +18,7 @@ module.exports = {
     '@typescript-eslint',
     'jsx-a11y',
     'prettier',
+    'unused-imports',
   ],
   parserOptions: {
     // ecmaVersion: 'latest',
@@ -41,6 +42,9 @@ module.exports = {
       ImportDeclaration: { multiline: true },
       ExportDeclaration: { multiline: true },
     }],
+    'no-unused-vars': 'off',
+    'unused-imports/no-unused-imports': 'error',
+    'unused-imports/no-unused-vars': 'warn',
     '@typescript-eslint/no-unused-vars': 'warn',
   },
   overrides: [

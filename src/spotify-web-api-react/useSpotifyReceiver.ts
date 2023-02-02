@@ -1,12 +1,11 @@
 import queryString from 'query-string';
 import { useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import useSpotify from './useSpotify';
 
 const useSpotifyReceiver = (onError?: (message: string) => void) => {
-  const navigate = useNavigate();
   const { setAccessToken } = useSpotify();
-  const { hash, pathname } = useLocation();
+  const { hash } = useLocation();
 
   useEffect(() => {
     const response = queryString.parse(hash);
@@ -16,12 +15,13 @@ const useSpotifyReceiver = (onError?: (message: string) => void) => {
     } else if (response.access_token) {
       const accessToken = response.access_token as string;
       // const tokenType = response.token_type as string;
-      // const expiresIn = response.expires_in as string;
-      // const { state } = response;
-      setAccessToken(accessToken);
+      const expiresIn = parseInt(response.expires_in as string, 10);
+      const { state } = response;
+      setAccessToken(accessToken, expiresIn);
 
-      navigate(pathname.replace(hash, ''), { replace: true });
-    }
+      const redirectUrl = state?.includes(window.location.hostname) ? state as string : '';
+      window.location.href = redirectUrl;
+    } else window.location.href = '/';
   }, []);
 };
 

@@ -10,8 +10,8 @@ function SignIn() {
   return (
     <CenteredContent>
       <Authenticator>
+        {/* eslint-disable-next-line arrow-body-style */}
         {() => {
-          navigate('/');
           return (<span />);
         }}
       </Authenticator>

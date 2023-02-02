@@ -16,13 +16,12 @@ function HeaderNav() {
     <>
       <AppBar position="sticky">
         <Toolbar>
-          {authenticated
-          && (
+          {/* {authenticated */}
+          {/* && ( */}
           <IconButton size="large" edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }} onClick={toggleNav}>
             <MenuIcon />
           </IconButton>
-          )}
-          <Button component={Link} to="/" disableRipple sx={{ minHeight: 'inherit' }}>
+          <Button component={Link} to="/asdkfjh" disableRipple sx={{ minHeight: 'inherit' }}>
             <AppName variant="h6" component="h1" />
           </Button>
           <SignIn />

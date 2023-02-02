@@ -8,12 +8,15 @@ interface AuthModel {
   name?: string;
 }
 
-export function AuthContextProvider({ children = null }: { children?: React.ReactNode }) {
+export function AuthContextProvider({ children } : { children?: React.ReactNode }) {
   const [authModel, setAuthModel] = useState<AuthModel>({});
 
   useEffect(() => {
     Auth.currentCredentials()
-      .then((c) => setAuthModel((m) => ({ ...(m as AuthModel), authenticated: c.authenticated })));
+      .then((c) => setAuthModel((m) => ({
+        ...(m as AuthModel),
+        authenticated: c.authenticated,
+      })));
     Auth.currentUserInfo()
       .then((i) => setAuthModel((m) => ({ ...(m as AuthModel), name: i?.attributes?.name })));
   }, []);

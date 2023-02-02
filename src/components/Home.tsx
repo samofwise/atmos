@@ -1,13 +1,12 @@
 import { useContext } from 'react';
-import { styled, Mixins } from '@mui/material';
+import { styled, Grid, Skeleton, Box } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import SignIn from './Auth/Authenticator';
 import AppName from './common/AppName';
 import ShowSignInContext from '../contexts/ShowSignInContext';
-import useSpotifyReceiver from '../spotify-web-api-react/useSpotifyReceiver';
+import { heightWithoutBar } from './theme';
 
 function Home() {
-  useSpotifyReceiver();
   const { showSignIn: signIn } = useContext(ShowSignInContext);
   return signIn ? (<SignIn />)
     : (
@@ -19,20 +18,74 @@ function Home() {
           </div>
           <Water />
         </SectionOne>
+        <GeneralSection sx={{ background: '#8f4805' }}>
+          <Grid container spacing={2} sx={{ height: '100%' }}>
+            <Grid item xs={6}>
+              <div>Details here</div>
+            </Grid>
+            <Grid item xs={6}>
+              <Skeleton variant="rounded" width="100%" height="100%" />
+            </Grid>
+          </Grid>
+        </GeneralSection>
+        <GeneralSection sx={{ }}>
+          <Grid container spacing={2} sx={{ height: '100%' }}>
+            <Grid item xs={6}>
+              <div>Details here</div>
+            </Grid>
+            <Grid item xs={6}>
+              <Skeleton variant="rounded" width="100%" height="100%" />
+            </Grid>
+          </Grid>
+        </GeneralSection>
+        <GeneralSection sx={{ background: '#0B1340' }}>
+          <Grid container spacing={2} sx={{ height: '100%' }}>
+            <Grid item xs={6}>
+              <div>Details here</div>
+            </Grid>
+            <Grid item xs={6}>
+              <Skeleton variant="rounded" width="100%" height="100%" />
+            </Grid>
+          </Grid>
+        </GeneralSection>
       </Page>
     );
 }
 
 const Page = styled('article')({ textAlign: 'center' });
 
-const SectionOne = styled('section')(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  overflow: 'hidden',
-  justifyContent: 'center',
-  height: `calc(100vh - ${(theme.mixins as Mixins).toolbar.minHeight}px)`,
-  position: 'relative',
-}));
+const SectionOne = styled('section')((p) => {
+  const { theme } = p;
+  return ({
+    display: 'flex',
+    alignItems: 'center',
+    overflow: 'hidden',
+    justifyContent: 'center',
+    position: 'relative',
+    ...heightWithoutBar(theme),
+    // [`${theme.breakpoints.up('xs')} and (orientation: landscape)`]: {},
+  });
+});
+
+const GeneralSection = styled(Box)({ height: 400, padding: 16 });
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+
+// const searchForMedia = (
+//   obj: CSSProperties,
+//   searchProperty: keyof CSSProperties,
+//   action: (o: CSSProperties) => CSSProperties,
+// ): CSSProperties => {
+//   const mediaQuerys = (Object.keys(obj) as (keyof CSSProperties)[])
+// .filter((k) => k.startsWith('@media'));
+
+//   const subObjects = mediaQuerys.map((q) => searchForMedia(
+//     obj[q] as CSSProperties,
+//     searchProperty,
+//     action,
+//   ));
+//   return ({ ...action(obj), ...subObjects }) as CSSProperties;
+// };
 
 const StyledTitle = styled(AppName)({ fontSize: 100 });
 

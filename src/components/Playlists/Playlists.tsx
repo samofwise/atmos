@@ -1,74 +1,182 @@
-import { AddOutlined, DoneOutline, EditOutlined, PlayArrow } from '@mui/icons-material';
+import { Add, Delete, Done, Edit, PlayArrow } from '@mui/icons-material';
 import {
   AppBar,
   Box,
-  Card, CardContent, IconButton, List, ListItem, ListItemButton, ListItemText, styled, Typography,
+  Card, CardContent, Fade, IconButton, ImageList,
+  ImageListItem, List, ListItem, ListItemButton,
+  ListItemText, styled, Typography,
 } from '@mui/material';
 
 import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { PlaylistGroup } from '../../api/api';
-import usePlaylistGroupService from '../../dal/usePlaylistGroupService';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { usePlayerDevice } from 'react-spotify-web-playback-sdk';
+import { ModelPlaylistConnection, Playlist, PlaylistGroup } from '../../api/api';
+import usePlaylistGroupService from '../../data/usePlaylistGroupService';
+import useSpotify from '../../spotify-web-api-react/useSpotify';
+import { heightWithoutBar } from '../theme';
 
 function Playlists() {
-  const { getPlaylistGroups } = usePlaylistGroupService();
+  const device = usePlayerDevice();
+
+  const { getPlaylistGroups, deletePlaylistGroup } = usePlaylistGroupService();
   const [playlistGroups, setPlaylistGroup] = useState<PlaylistGroup[]>([]);
   const loadData = useCallback(async () => setPlaylistGroup(await getPlaylistGroups()), []);
   useEffect(() => { loadData(); }, [loadData]);
   const [isEditing, setIsEditing] = useState(false);
+  const { api } = useSpotify();
 
   const toggleIsEditing = () => setIsEditing((x) => !x);
 
+  const deletePlaylist = async (group : PlaylistGroup) => {
+    await deletePlaylistGroup(group.id);
+    loadData();
+  };
+
+  const playPlaylist = async (playlist: Playlist) => {
+    // const devices = await api.getMyDevices();
+    // console.log(devices);
+    api.play({ device_id: '263debd8fe504d13c73c6a72acbf1a6ccf0edc5a', uris: playlist.songs.map((s) => s.uri) });
+  };
+
   return (
-    <>
+    <StyledPage>
       <Box sx={{ textAlign: 'right', marginTop: '10px' }}>
         <IconButton size="large" edge="end" color="inherit" aria-label="menu" sx={{ mr: 2 }} onClick={toggleIsEditing}>
-          {!isEditing ? <EditOutlined /> : <DoneOutline />}
+          {!isEditing ? <Edit /> : <Done />}
         </IconButton>
         <IconButton component={Link} to="/playlists/new" size="large" edge="end" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
-          <AddOutlined />
+          <Add />
         </IconButton>
       </Box>
-      <Box sx={{ display: 'flex', flexWrap: 'wrap', padding: '0 10px 10px', m: 'auto 0' }}>
+      <Box sx={{ flex: '1 1 auto', overflowY: 'auto', display: 'flex', flexWrap: 'wrap', padding: '0 10px 10px', m: 'auto 0' }}>
         {playlistGroups.map((g) => (
-          <StyledCard key={g.id}>
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="h2" sx={{ textAlign: 'center' }}>
-                {g.name}
-              </Typography>
-              { isEditing && (
-              <IconButton component={Link} to={`/playlists/${g.id}`} size="large" edge="end" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
-                <EditOutlined />
+          <PlaylistCard
+            key={g.id}
+            playlistGroup={g}
+            {...{ isEditing, deletePlaylist, playPlaylist }}
+          />
+        ))}
+      </Box>
+      <AppBar position="relative" sx={{ top: 'auto', bottom: 0 }}>
+        <IconButton size="large" edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
+          <PlayArrow />
+        </IconButton>
+      </AppBar>
+    </StyledPage>
+  );
+}
+
+const StyledPage = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  ...heightWithoutBar(theme),
+}));
+
+export default Playlists;
+
+interface PlaylistCardProps {
+  playlistGroup: PlaylistGroup,
+  isEditing: boolean
+  deletePlaylist: (group: PlaylistGroup) => void,
+  playPlaylist: (playlist: Playlist) => void
+}
+
+function PlaylistCard({
+  playlistGroup, isEditing, deletePlaylist,
+  playPlaylist,
+}: PlaylistCardProps) {
+  const onDeleteClick = () => deletePlaylist(playlistGroup);
+  // console.log(playlistGroup);
+  return (
+    <StyledCard key={playlistGroup.id}>
+      <CardContent sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+        <StyledImageList cols={2} gap={10}>
+          {getImages(playlistGroup).map((item) => (
+            <ImageListItem key={item}>
+              <img src={`${item}`} alt="" className={isEditing ? 'blurred' : ''} />
+            </ImageListItem>
+          ))}
+        </StyledImageList>
+        <StyledHeader gutterBottom variant="h5" sx={{ textAlign: 'center', zIndex: 100 }}>
+          {playlistGroup.name}
+        </StyledHeader>
+        <Box sx={{ flex: '1 0 auto', display: 'flex', justifyContent: 'center', position: 'relative' }}>
+          <Fade in={isEditing}>
+            <StyledContent sx={{ position: 'absolute' }}>
+              <IconButton component={Link} to={`/playlists/${playlistGroup.id}`} size="large" edge="end" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
+                <Edit />
               </IconButton>
-              )}
-              <List>
-                {g.Playlists?.items?.map((p) => (
-                  <ListItem key={p?.id} disablePadding>
+              <IconButton onClick={onDeleteClick} size="large" edge="end" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
+                <Delete />
+              </IconButton>
+            </StyledContent>
+          </Fade>
+          <Fade in={!isEditing}>
+            <StyledContent>
+              <List sx={{ width: '100%', position: 'absolute' }}>
+                {playlistGroup.Playlists?.items?.map((p) => (
+                  <ListItem key={p?.id} disablePadding onClick={() => p && playPlaylist(p)}>
                     <ListItemButton>
                       <ListItemText primary={p?.name} />
                     </ListItemButton>
                   </ListItem>
                 ))}
               </List>
-            </CardContent>
-          </StyledCard>
-        ))}
-      </Box>
-      <AppBar position="sticky" sx={{ top: 'auto', bottom: 0 }}>
-        <IconButton size="large" edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
-          <PlayArrow />
-        </IconButton>
-      </AppBar>
-    </>
+            </StyledContent>
+          </Fade>
+        </Box>
+      </CardContent>
+    </StyledCard>
   );
 }
 
 const StyledCard = styled(Card)`
 width: 250px;
-height: 250px; 
+height: 250px;
+position: relative;
 margin: 10px;
 border-radius: 15px;
 box-shadow: 3px 3px 0px 2px rgba(255,255,255,0.12)
 `;
 
-export default Playlists;
+const StyledHeader = styled(Typography)({
+  position: 'relative',
+  zIndex: 10,
+});
+
+const StyledImageList = styled(ImageList)({
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  bottom: 0,
+  right: 0,
+  zIndex: 0,
+  margin: 0,
+  '& img': {
+    opacity: 0.3,
+    transition: 'filter 200ms ease-in-out',
+    '&.blurred': { filter: 'blur(2px)' },
+  },
+});
+
+const StyledContent = styled(Box)({
+  position: 'absolute',
+  top: 0,
+  bottom: 0,
+  left: 0,
+  right: 0,
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+});
+
+const getImages = (g: PlaylistGroup) => {
+  const uniqueItems = (g.Playlists as ModelPlaylistConnection).items
+    .flatMap((p) => (p as Playlist).songs?.map((s) => s.image))
+    .filter((i) => i).filter((v, i, a) => a.indexOf(v) === i).slice(0, 4);
+
+  if (uniqueItems.length < 4) return [...uniqueItems, ...uniqueItems,
+    ...uniqueItems, ...uniqueItems].slice(0, 4);
+  return uniqueItems;
+};

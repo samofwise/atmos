@@ -29,6 +29,9 @@ export const getPlaylistGroup = /* GraphQL */ `
           PlaylistGroup {
             id
             name
+            Playlists {
+              nextToken
+            }
             createdAt
             updatedAt
           }
@@ -62,7 +65,31 @@ export const listPlaylistGroups = /* GraphQL */ `
             id
             name
             plays
+            songs {
+              id
+              name
+              uri
+              image
+              artist
+              parentPlaylistId
+            }
+            sourcePlaylists {
+              id
+              name
+              uri
+              image
+            }
+            PlaylistGroup {
+              id
+              name
+              createdAt
+              updatedAt
+            }
             playlistGroupId
+            nextPlaylists {
+              playlistId
+              name
+            }
             createdAt
             updatedAt
           }
@@ -103,7 +130,31 @@ export const getPlaylist = /* GraphQL */ `
             id
             name
             plays
+            songs {
+              id
+              name
+              uri
+              image
+              artist
+              parentPlaylistId
+            }
+            sourcePlaylists {
+              id
+              name
+              uri
+              image
+            }
+            PlaylistGroup {
+              id
+              name
+              createdAt
+              updatedAt
+            }
             playlistGroupId
+            nextPlaylists {
+              playlistId
+              name
+            }
             createdAt
             updatedAt
           }
@@ -151,6 +202,14 @@ export const listPlaylists = /* GraphQL */ `
           id
           name
           Playlists {
+            items {
+              id
+              name
+              plays
+              playlistGroupId
+              createdAt
+              updatedAt
+            }
             nextToken
           }
           createdAt
@@ -205,6 +264,14 @@ export const playlistsByPlaylistGroupId = /* GraphQL */ `
           id
           name
           Playlists {
+            items {
+              id
+              name
+              plays
+              playlistGroupId
+              createdAt
+              updatedAt
+            }
             nextToken
           }
           createdAt

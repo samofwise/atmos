@@ -1,17 +1,17 @@
 import TextField from '@mui/material/TextField';
 import Paper from '@mui/material/Paper';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import { AppBar, Box, Container, IconButton, Stack, Tab, Tabs, Typography } from '@mui/material';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { AddOutlined, DeleteOutline } from '@mui/icons-material';
-import usePlaylistGroupService from '../../dal/usePlaylistGroupService';
+import usePlaylistGroupService from '../../data/usePlaylistGroupService';
 import { NextPlaylist, Playlist, PlaylistGroup, Song, SourcePlaylist } from '../../api/api';
 import useSpotify from '../../spotify-web-api-react/useSpotify';
 import PlaylistDetails from './PlaylistDetails';
 import { getImageFromList } from '../Spotify/spotifyUtils';
-import usePlaylistService from '../../dal/usePlaylistService';
+import usePlaylistService from '../../data/usePlaylistService';
 
 const defaultGroup = { name: '', Playlists: { items: [] as Playlist[] } } as PlaylistGroup;
 const defaultPlaylist = {
@@ -27,7 +27,6 @@ function PlaylistEdit() {
   const { createPlaylist, updatePlaylist, deletePlaylist } = usePlaylistService();
   const { api } = useSpotify();
   const { id } = useParams();
-  const navigate = useNavigate();
   const [playlistGroup, setPlaylistGroup] = useState<PlaylistGroup>(defaultGroup);
   const isNew = id === 'new';
   const [tab, settab] = useState('');
@@ -71,7 +70,7 @@ function PlaylistEdit() {
     getImageFromList(await api.getPlaylistCoverImage(sourcedId))
   );
 
-  const goHome = () => navigate('/');
+  const goHome = () => true;// navigate('/');
 
   const changeTab = (event: React.SyntheticEvent, value: string) => settab(value);
 
@@ -92,6 +91,7 @@ function PlaylistEdit() {
     const group = await updatePlaylistGroup({ id: playlistGroup.id, name: playlistGroup.name });
     playlistGroup.Playlists?.items.forEach(async (p) => {
       if (p) {
+        // eslint-disable-next-line unused-imports/no-unused-vars
         const { PlaylistGroup: unneeded, createdAt: unneeded2, updatedAt: u3, ...playlist } = p;
         if (group.Playlists?.items.find((i) => i?.id === p.id)) (
           await updatePlaylist({ ...playlist })
@@ -101,15 +101,15 @@ function PlaylistEdit() {
     });
     // Delete missing items
     group.Playlists?.items.forEach(async (gp) => {
-      if (gp && playlistGroup.Playlists?.items.find((i) => i?.id === gp.id)) (
+      if (gp && !playlistGroup.Playlists?.items.find((i) => i?.id === gp.id)) (
         await deletePlaylist(gp.id)
       );
     });
   };
 
-  const onNameChange = ({ target }: React.ChangeEvent<HTMLInputElement>) =>
-    // eslint-disable-next-line implicit-arrow-linebreak
-    setPlaylistGroup((g) => ({ ...g, name: target.value }));
+  const onNameChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => (
+    setPlaylistGroup((g) => ({ ...g, name: target.value }))
+  );
 
   const onPlaylistCreate = () => {
     const newId = Date.now().toString();
@@ -152,7 +152,15 @@ function PlaylistEdit() {
             {isNew ? 'New ' : 'Edit '}
             Playlist Group
           </Typography>
-          <TextField label="Name" name="name" value={playlistGroup.name} onChange={onNameChange} fullWidth required />
+          <TextField
+            label="Name"
+            name="name"
+            value={playlistGroup.name}
+            onChange={onNameChange}
+            autoFocus
+            fullWidth
+            required
+          />
 
           <Box sx={{ bgcolor: 'background.paper' }}>
             <AppBar position="static">
@@ -185,18 +193,26 @@ function PlaylistEdit() {
             </AppBar>
 
             {
-              currentPlaylist ? (
-                <PlaylistDetails
-                  playlist={currentPlaylist}
-                  onChange={onPlaylistChange}
-                />
-              )
-                : <p>Create a New Playlist</p>
-            }
+            currentPlaylist ? (
+              <PlaylistDetails
+                playlist={currentPlaylist}
+                onChange={onPlaylistChange}
+              />
+            )
+              : <p>Create a New Playlist</p>
+          }
           </Box>
 
           <Box sx={{ textAlign: 'right' }}>
-            <Button variant="contained" color="secondary" onClick={goHome} sx={{ ml: 2 }}>Cancel</Button>
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={goHome}
+              sx={{ ml: 2 }}
+            >
+              Cancel
+
+            </Button>
             <Button variant="contained" onClick={onDone} sx={{ ml: 2 }}>Done</Button>
           </Box>
         </Stack>

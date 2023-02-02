@@ -1,23 +1,24 @@
-import { createContext, useMemo, useState } from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
+import { createContext, useMemo } from 'react';
 import SpotifyWebApi from 'spotify-web-api-js';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import SpotifyCredentials from './SpotifyCredentials';
 
 interface ContextModel {
   api: SpotifyWebApi.SpotifyWebApiJs
   credentials: SpotifyCredentials
-  setCredentials: React.Dispatch<React.SetStateAction<SpotifyCredentials>>
 }
 
 const SpotifyContext = createContext({} as ContextModel);
 
-export function SpotifyProvider({ children }: { children?: React.ReactNode }) {
-  const [credentials, setCredentials] = useState({} as SpotifyCredentials);
+interface Props {
+  children?: React.ReactNode,
+  credentials: SpotifyCredentials
+}
+
+export function SpotifyProvider({ children, credentials }: Props) {
   const api = useMemo(() => (new SpotifyWebApi()), []);
   const model = useMemo(
-    () => ({ api, credentials, setCredentials }),
-    [credentials, setCredentials],
+    () => ({ api, credentials }),
+    [api, credentials],
   );
 
   return (
