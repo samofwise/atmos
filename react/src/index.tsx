@@ -2,7 +2,7 @@ import { Amplify } from 'aws-amplify';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/App';
-import awsExports from './aws-exports';
+import awsExports from '../../../aws-exports';
 import reportWebVitals from './reportWebVitals';
 
 Amplify.configure(awsExports);

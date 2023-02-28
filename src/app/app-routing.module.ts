@@ -4,9 +4,9 @@ import { ComunityPlaylistsComponent } from './comunity-playlists/comunity-playli
 import { HomeComponent } from './home/home.component';
 import { PlaylistsComponent } from './playlists/playlists.component';
 
-const routes: Routes = [
-  {title: 'Playlists', path:'', component: HomeComponent },
-  {title: 'Community Playlists', path:'comunity-playlists', component: ComunityPlaylistsComponent }
+export const routes: Routes = [
+  { title: 'Playlists', path: '', component: HomeComponent },
+  { title: 'Community Playlists', path: 'comunity-playlists', component: ComunityPlaylistsComponent }
 ];
 
 @NgModule({

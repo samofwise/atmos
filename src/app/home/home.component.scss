@@ -1,7 +1,16 @@
 section {
-  height: 400px;
   padding: 16px;
   font-size: 40px;
+  line-height: normal;
+  background-color: none;
+}
+
+#musicNotesTile {
+  overflow: visible;
+
+  ::ng-deep .mat-grid-tile-content {
+    justify-content: start;
+  }
 }
 
 #sectionTwo {

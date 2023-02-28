@@ -25,6 +25,7 @@
     "src",
     ".",
     ".eslintrc.js",
+    "../aws-exports.js",
   ],
   "exclude": [
     "Old"

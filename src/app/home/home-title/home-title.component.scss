@@ -1,5 +1,9 @@
+@use '@angular/material' as mat;
+
+
+
 section {
-  height: 100vh; //-app bar height
+  height: calc(100vh - 64px); //-app bar height
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -45,8 +49,7 @@ $ocean-height: 40vh;
   left: 0;
   width: 100vw;
   height: $ocean-height;
-  background: radial-gradient(100vw 45vh at 50vw -70px, #F5B92C 20%, #F27048, #C04B5E, #7B3362, #121218)
-  // background: getWaterGradient();
+  background: radial-gradient(100vw 45vh at 50vw -70px, #F5B92C 20%, #F27048, #C04B5E, #7B3362, #121218) // background: getWaterGradient();
 }
 
 #reflection {

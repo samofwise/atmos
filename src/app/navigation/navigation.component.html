@@ -1,0 +1,22 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <app-app-name />
+  <span class="example-spacer"></span>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav [(opened)]="opened" (opened)="events.push('open!')" (closed)="events.push('close!')">
+    <mat-nav-list role="list">
+      <a mat-list-item routerLink="{{ link.path }}" *ngFor="let link of links" (click)="sidenav.toggle()">{{ link.title
+        }}</a>
+      <!-- [activated]="link.isActive" -->
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

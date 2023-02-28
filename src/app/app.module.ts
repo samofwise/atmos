@@ -10,6 +10,15 @@ import { HomeComponent } from './home/home.component';
 import { HomeTitleComponent } from './home/home-title/home-title.component';
 
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatButtonModule } from '@angular/material/button';
+import { MatListModule } from '@angular/material/list';
+
+import { AppNameComponent } from './app-name/app-name.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { IndexComponent } from './index/index.component';
 
 @NgModule({
   declarations: [
@@ -17,13 +26,21 @@ import { MatGridListModule } from '@angular/material/grid-list';
     PlaylistsComponent,
     ComunityPlaylistsComponent,
     HomeComponent,
-    HomeTitleComponent
+    HomeTitleComponent,
+    AppNameComponent,
+    NavigationComponent,
+    IndexComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatGridListModule
+    MatGridListModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatButtonModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
