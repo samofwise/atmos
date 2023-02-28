@@ -12,18 +12,17 @@ import CommunityPlaylists from './CommunityPlaylists/CommunityPlaylists';
 import Root from './Root';
 import { SpotifyProvider } from '../spotify-web-api-react/SpotifyContext';
 import useSpotify from '../spotify-web-api-react/useSpotify';
-import SpotifyAuthReceiver from '../spotify-web-api-react/SpotifyAuthReceiver';
 import SpotifyCredentials from '../spotify-web-api-react/SpotifyCredentials';
 import Playlists from './Playlists/Playlists';
 import Home from './Home';
-import useSpotifyRedirector from '../spotify-web-api-react/useSpotifyRedirector';
+import SpotifyAuthReceiver from '../spotify-web-api-react/SpotifyAuthReceiver';
+import { PlayProvider } from '../contexts/PlayContext';
+
+const SpotifySdk = WebPlaybackSDK as React.FC<React.PropsWithChildren<WebPlaybackSDKProps>>;
 
 function App() {
-  useSpotifyRedirector();
-  const { authenticated } = useContext(AuthContext);
-  const { api } = useSpotify();
-
-  const SpotifySdk = WebPlaybackSDK as React.FC<React.PropsWithChildren<WebPlaybackSDKProps>>;
+  const { isLoading, authenticated } = useContext(AuthContext);
+  const { credentials, getAccessToken } = useSpotify();
 
   useEffect(() => {
     window.addEventListener('scroll', onScroll, true);
@@ -41,10 +40,10 @@ function App() {
     {
       element: <Root />,
       children: [
-        { path: '/', element: authenticated ? <Playlists /> : <Home /> },
-        { path: '/auth/spotify', element: <SpotifyAuthReceiver /> },
+        { path: '/', element: (!isLoading && !authenticated && <Home />) || (!isLoading && <Playlists />) },
         { path: '/community', element: <CommunityPlaylists /> },
         { path: '/playlists/:id', element: <PlaylistEdit /> },
+        { path: credentials.redirectUri, element: <SpotifyAuthReceiver /> },
       ],
     },
   ]);
@@ -55,10 +54,13 @@ function App() {
         <CssBaseline />
         <SpotifySdk
           initialDeviceName="atmos Spotify"
-          getOAuthToken={api.getAccessToken}
+          getOAuthToken={getAccessToken}
           initialVolume={0.5}
+          connectOnInitialized
         >
-          <RouterProvider {...{ router }} />
+          <PlayProvider>
+            <RouterProvider {...{ router }} />
+          </PlayProvider>
         </SpotifySdk>
       </ShowSignInProvider>
     </ThemeProvider>
@@ -77,8 +79,8 @@ function AppAuthWrapper() {
 
 const credentials: SpotifyCredentials = {
   clientId: 'a35ad70cf30442f0a53ba22a95e85c8e',
-  scope: 'user-read-private user-read-email user-read-recently-played user-read-playback-state user-modify-playback-state',
-  redirectUri: 'http://localhost:3000/auth/spotify/',
+  scope: 'user-read-private user-read-email user-read-recently-played user-read-playback-state user-modify-playback-state streaming',
+  redirectUri: '/auth/spotify/',
 };
 
 const StyledApp = styled(AppAuthWrapper)`

@@ -1,12 +1,13 @@
 import { SourcePlaylist, Song } from '../../api/api';
 
-export const getImage = (i: SpotifyApi.PlaylistObjectSimplified | SpotifyApi.TrackObjectFull) => (
-  getImageFromList(i.type === 'playlist' ? i.images : i.album.images)
+export const getImage = (i: SpotifyApi.PlaylistObjectSimplified | SpotifyApi.TrackObjectFull |
+Spotify.Track) => (
+  getImageFromList(i.type === 'playlist' ? i.images : i.album.images as SpotifyApi.ImageObject[])
 );
 
 export const getImageFromList = (i:SpotifyApi.ImageObject[]) => i.sort(spotifyImageSort)[0]?.url;
 
-export const getArtist = (i:SpotifyApi.TrackObjectFull) => i.artists.map((a) => a.name).join(', ');
+export const getArtist = (i:SpotifyApi.TrackObjectFull | Spotify.Track) => i.artists.map((a) => a.name).join(', ');
 
 export const spotifyImageSort = (i:SpotifyApi.ImageObject) => i.width ?? 0;
 

@@ -12,6 +12,7 @@ import useSpotify from '../../spotify-web-api-react/useSpotify';
 import PlaylistDetails from './PlaylistDetails';
 import { getImageFromList } from '../Spotify/spotifyUtils';
 import usePlaylistService from '../../data/usePlaylistService';
+import useSpotifyHandler from '../../spotify-web-api-react/useSpotifyHandler';
 
 const defaultGroup = { name: '', Playlists: { items: [] as Playlist[] } } as PlaylistGroup;
 const defaultPlaylist = {
@@ -23,6 +24,7 @@ const defaultPlaylist = {
 } as Playlist;
 
 function PlaylistEdit() {
+  useSpotifyHandler('alert');
   const { getPlaylistGroup, createPlaylistGroup, updatePlaylistGroup } = usePlaylistGroupService();
   const { createPlaylist, updatePlaylist, deletePlaylist } = usePlaylistService();
   const { api } = useSpotify();

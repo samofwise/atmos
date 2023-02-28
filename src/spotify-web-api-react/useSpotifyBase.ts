@@ -29,7 +29,7 @@ const useSpotifyBase = (credentials: SpotifyCredentials) => {
         response_type: 'token',
         client_id: credentials.clientId,
         scope: credentials.scope,
-        redirect_uri: credentials.redirectUri,
+        redirect_uri: `${window.location.origin}${credentials.redirectUri}`,
         state: window.location.href,
       },
     });

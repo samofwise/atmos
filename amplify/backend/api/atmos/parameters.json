@@ -2,5 +2,5 @@
   "AppSyncApiName": "atmos",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
   "DynamoDBEnableServerSideEncryption": false,
-  "AuthModeLastUpdated": "2023-01-18T13:30:57.915Z"
+  "AuthModeLastUpdated": "2023-02-24T11:21:53.582Z"
 }

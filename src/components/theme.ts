@@ -10,9 +10,10 @@ const theme = createTheme({
     MuiCssBaseline: {
       styleOverrides: {
         body: {
-          backgroundImage: 'url("stars.jpg")',
+          backgroundImage: 'url("stars.png")',
           backgroundRepeat: 'repeat',
           backgroundSize: '500px',
+          overflowX: 'hidden',
         } as CSSProperties,
       },
     },

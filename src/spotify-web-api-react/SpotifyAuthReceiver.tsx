@@ -1,9 +1,9 @@
 import { Hidden } from '@mui/material';
 import React from 'react';
-import useSpotifyReceiver from './useSpotifyReceiver';
+import useSpotifyHandler from './useSpotifyHandler';
 
 function SpotifyAuthReceiver() {
-  useSpotifyReceiver();
+  useSpotifyHandler('off');
   return <Hidden />;
 }
 

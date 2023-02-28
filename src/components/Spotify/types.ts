@@ -5,6 +5,6 @@ export type SpotifyItemFull = SpotifyApi.PlaylistObjectFull | SpotifyApi.TrackOb
 export type SpotifyItemSimple = SpotifyApi.PlaylistObjectSimplified | SpotifyApi.TrackObjectFull;
 
 export type SongListType = Song | SourcePlaylistFull
-| SpotifyApi.PlaylistObjectFull | SpotifyApi.TrackObjectFull;
+| SpotifyApi.PlaylistObjectFull | SpotifyApi.TrackObjectFull | Spotify.Track;
 
 export type SourcePlaylistFull = SourcePlaylist & { tracks: Song[] };

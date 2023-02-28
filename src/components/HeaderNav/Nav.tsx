@@ -22,10 +22,10 @@ function Nav({ navShow, setNavShow }: Props) {
   const { redirectWithImplicitGrantFlow } = useSpotify();
 
   const setNav = (state: boolean) => () => setNavShow(state);
-  const signOut = () => Auth.signOut();
+  const signOut = async () => Auth.signOut({ global: true });
 
   const navItems = [
-    { text: 'Playlists', url: '/jsadhfkjasd', icon: <MailIcon /> },
+    { text: 'Playlists', url: '/', icon: <MailIcon /> },
     { text: 'Community Playlists', url: '/community', icon: <InboxIcon /> },
     { isDivider: true },
   ].map((n, i) => ({ ...n, id: i }));
@@ -37,7 +37,7 @@ function Nav({ navShow, setNavShow }: Props) {
           {navItems.map(({ id, ...item }) => (
             'isDivider' in item ? <Divider key={id} /> : <NavItem key={id} {...item} />
           ))}
-          {true && (
+          {authenticated && (
           <>
             <SignOut icon={<Logout />} text="Connect To Spotify" onClick={redirectWithImplicitGrantFlow} />
             <NavItem icon={<Logout />} text="Sign Out" onClick={signOut} />

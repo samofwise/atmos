@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useCallback, useContext } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import useLocalStorageState from 'use-local-storage-state';
 import SpotifyContext from './SpotifyContext';
@@ -19,7 +19,19 @@ const useSpotify = () => {
     api.setAccessToken(accessToken);
   };
 
-  return { api, redirectWithImplicitGrantFlow, getImplicitGrantUrl, setAccessToken };
+  const getAccessToken = useCallback(
+    (callback: (token: string) => void) => callback(accessTokenStorage as string),
+    [accessTokenStorage],
+  );
+
+  return {
+    api,
+    credentials,
+    redirectWithImplicitGrantFlow,
+    getImplicitGrantUrl,
+    setAccessToken,
+    getAccessToken,
+  };
 };
 
 export default useSpotify;

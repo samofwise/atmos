@@ -1,6 +1,5 @@
-import { Add, Delete, Done, Edit, PlayArrow } from '@mui/icons-material';
+import { Add, Delete, Done, Edit } from '@mui/icons-material';
 import {
-  AppBar,
   Box,
   Card, CardContent, Fade, IconButton, ImageList,
   ImageListItem, List, ListItem, ListItemButton,
@@ -13,11 +12,16 @@ import { Link } from 'react-router-dom';
 import { usePlayerDevice } from 'react-spotify-web-playback-sdk';
 import { ModelPlaylistConnection, Playlist, PlaylistGroup } from '../../api/api';
 import usePlaylistGroupService from '../../data/usePlaylistGroupService';
+import usePlayService from '../../hooks/usePlayService';
 import useSpotify from '../../spotify-web-api-react/useSpotify';
+import useSpotifyHandler from '../../spotify-web-api-react/useSpotifyHandler';
 import { heightWithoutBar } from '../theme';
+import PlayBar from './PlayBar';
 
 function Playlists() {
+  useSpotifyHandler();
   const device = usePlayerDevice();
+  const { play } = usePlayService();
 
   const { getPlaylistGroups, deletePlaylistGroup } = usePlaylistGroupService();
   const [playlistGroups, setPlaylistGroup] = useState<PlaylistGroup[]>([]);
@@ -25,18 +29,17 @@ function Playlists() {
   useEffect(() => { loadData(); }, [loadData]);
   const [isEditing, setIsEditing] = useState(false);
   const { api } = useSpotify();
+  const [devices, setDevices] = useState<SpotifyApi.UserDevice[]>();
+
+  useEffect(() => {
+    (async () => setDevices((await api.getMyDevices()).devices))();
+  }, [device]);
 
   const toggleIsEditing = () => setIsEditing((x) => !x);
 
   const deletePlaylist = async (group : PlaylistGroup) => {
     await deletePlaylistGroup(group.id);
     loadData();
-  };
-
-  const playPlaylist = async (playlist: Playlist) => {
-    // const devices = await api.getMyDevices();
-    // console.log(devices);
-    api.play({ device_id: '263debd8fe504d13c73c6a72acbf1a6ccf0edc5a', uris: playlist.songs.map((s) => s.uri) });
   };
 
   return (
@@ -54,15 +57,11 @@ function Playlists() {
           <PlaylistCard
             key={g.id}
             playlistGroup={g}
-            {...{ isEditing, deletePlaylist, playPlaylist }}
+            {...{ isEditing, deletePlaylist, playPlaylist: play }}
           />
         ))}
       </Box>
-      <AppBar position="relative" sx={{ top: 'auto', bottom: 0 }}>
-        <IconButton size="large" edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
-          <PlayArrow />
-        </IconButton>
-      </AppBar>
+      <PlayBar />
     </StyledPage>
   );
 }
