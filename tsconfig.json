@@ -31,6 +31,10 @@
     "strictTemplates": true
   },
   "include": [
-    "src/*.*"
+    "src/*.*",
+    "aws-exports.js"
+  ],
+  "exclude": [
+    "atmos-react/react"
   ]
 }
