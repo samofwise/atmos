@@ -1,0 +1,17 @@
+section {
+  height: 400px;
+  padding: 16px;
+  font-size: 40px;
+}
+
+#sectionTwo {
+  background: #F27048;
+}
+
+#sectionFour {
+  background: #0B1340;
+}
+
+#fadingMusicNotes {
+  mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 25%, transparent 80%)
+}

@@ -1,0 +1,64 @@
+section {
+  height: 100vh; //-app bar height
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+
+  background: radial-gradient(100vw 70vh at 50vw 60vh, #F5B92C 20%, #F27048, #C04B5E, #7B3362, #121212);
+  //background: gradient background
+  //const getBackgroundGradient = (offset?: number) => `radial-gradient(100vw 70vh at 50vw calc(60vh + ${offset ?? 0}px), #F5B92C 20%, #F27048, #C04B5E, #7B3362, #121212)`;
+}
+
+#stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-image: url('../../../assets/stars.png');
+  background-repeat: repeat;
+  background-size: 500px;
+}
+
+$ocean-height: 40vh;
+
+#sun {
+  background-image: url('../../../assets/sun.svg');
+  position: absolute;
+  transform: translateX(-50%);
+  top: calc((100vh - $ocean-height) - 144px);
+  left: 50%;
+
+  --width: 291px;
+  width: var(--width);
+  height: calc(var(--width) * 797 / 1603);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#water {
+  position: absolute;
+  top: 100vh - $ocean-height;
+  left: 0;
+  width: 100vw;
+  height: $ocean-height;
+  background: radial-gradient(100vw 45vh at 50vw -70px, #F5B92C 20%, #F27048, #C04B5E, #7B3362, #121218)
+  // background: getWaterGradient();
+}
+
+#reflection {
+  background-image: url('../../../assets/reflection.svg');
+  position: absolute;
+  transform: translateX(-50%);
+  top: 100 - $ocean-height;
+  left: calc(50% - 5px);
+
+  --width: 320px;
+  width: var(--width);
+  height: calc(var(--width) * 1278 / 1519);
+  background-size: cover;
+  background-repeat: no-repeat
+}
