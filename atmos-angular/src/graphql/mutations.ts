@@ -37,6 +37,7 @@ export const createPlaylistGroup = /* GraphQL */ `
             }
             createdAt
             updatedAt
+            owner
           }
           playlistGroupId
           nextPlaylists {
@@ -45,11 +46,13 @@ export const createPlaylistGroup = /* GraphQL */ `
           }
           createdAt
           updatedAt
+          owner
         }
         nextToken
       }
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -88,6 +91,7 @@ export const updatePlaylistGroup = /* GraphQL */ `
             }
             createdAt
             updatedAt
+            owner
           }
           playlistGroupId
           nextPlaylists {
@@ -96,11 +100,13 @@ export const updatePlaylistGroup = /* GraphQL */ `
           }
           createdAt
           updatedAt
+          owner
         }
         nextToken
       }
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -139,6 +145,7 @@ export const deletePlaylistGroup = /* GraphQL */ `
             }
             createdAt
             updatedAt
+            owner
           }
           playlistGroupId
           nextPlaylists {
@@ -147,11 +154,13 @@ export const deletePlaylistGroup = /* GraphQL */ `
           }
           createdAt
           updatedAt
+          owner
         }
         nextToken
       }
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -205,6 +214,7 @@ export const createPlaylist = /* GraphQL */ `
               name
               createdAt
               updatedAt
+              owner
             }
             playlistGroupId
             nextPlaylists {
@@ -213,11 +223,13 @@ export const createPlaylist = /* GraphQL */ `
             }
             createdAt
             updatedAt
+            owner
           }
           nextToken
         }
         createdAt
         updatedAt
+        owner
       }
       playlistGroupId
       nextPlaylists {
@@ -226,6 +238,7 @@ export const createPlaylist = /* GraphQL */ `
       }
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -279,6 +292,7 @@ export const updatePlaylist = /* GraphQL */ `
               name
               createdAt
               updatedAt
+              owner
             }
             playlistGroupId
             nextPlaylists {
@@ -287,11 +301,13 @@ export const updatePlaylist = /* GraphQL */ `
             }
             createdAt
             updatedAt
+            owner
           }
           nextToken
         }
         createdAt
         updatedAt
+        owner
       }
       playlistGroupId
       nextPlaylists {
@@ -300,6 +316,7 @@ export const updatePlaylist = /* GraphQL */ `
       }
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -353,6 +370,7 @@ export const deletePlaylist = /* GraphQL */ `
               name
               createdAt
               updatedAt
+              owner
             }
             playlistGroupId
             nextPlaylists {
@@ -361,11 +379,13 @@ export const deletePlaylist = /* GraphQL */ `
             }
             createdAt
             updatedAt
+            owner
           }
           nextToken
         }
         createdAt
         updatedAt
+        owner
       }
       playlistGroupId
       nextPlaylists {
@@ -374,6 +394,7 @@ export const deletePlaylist = /* GraphQL */ `
       }
       createdAt
       updatedAt
+      owner
     }
   }
 `;

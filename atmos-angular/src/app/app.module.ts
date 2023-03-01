@@ -17,6 +17,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
 
@@ -65,7 +67,8 @@ Amplify.configure(updateAwsExports(awsconfig));
     MatCardModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    MatSnackBarModule
   ],
   providers: [{
     provide: APP_INITIALIZER,

@@ -61,6 +61,7 @@ export type PlaylistGroup = {
   Playlists?: ModelPlaylistConnection | null,
   createdAt: string,
   updatedAt: string,
+  owner?: string | null,
 };
 
 export type ModelPlaylistConnection = {
@@ -77,10 +78,11 @@ export type Playlist = {
   songs:  Array<Song >,
   sourcePlaylists:  Array<SourcePlaylist >,
   PlaylistGroup?: PlaylistGroup | null,
-  playlistGroupId?: string | null,
+  playlistGroupId: string,
   nextPlaylists:  Array<NextPlaylist >,
   createdAt: string,
   updatedAt: string,
+  owner?: string | null,
 };
 
 export type Song = {
@@ -122,7 +124,7 @@ export type CreatePlaylistInput = {
   plays: number,
   songs: Array< SongInput >,
   sourcePlaylists: Array< SourcePlaylistInput >,
-  playlistGroupId?: string | null,
+  playlistGroupId: string,
   nextPlaylists: Array< NextPlaylistInput >,
 };
 
@@ -329,8 +331,9 @@ export type CreatePlaylistGroupMutation = {
           } | null,
           createdAt: string,
           updatedAt: string,
+          owner?: string | null,
         } | null,
-        playlistGroupId?: string | null,
+        playlistGroupId: string,
         nextPlaylists:  Array< {
           __typename: "NextPlaylist",
           playlistId: string,
@@ -338,11 +341,13 @@ export type CreatePlaylistGroupMutation = {
         } >,
         createdAt: string,
         updatedAt: string,
+        owner?: string | null,
       } | null >,
       nextToken?: string | null,
     } | null,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };
 
@@ -389,8 +394,9 @@ export type UpdatePlaylistGroupMutation = {
           } | null,
           createdAt: string,
           updatedAt: string,
+          owner?: string | null,
         } | null,
-        playlistGroupId?: string | null,
+        playlistGroupId: string,
         nextPlaylists:  Array< {
           __typename: "NextPlaylist",
           playlistId: string,
@@ -398,11 +404,13 @@ export type UpdatePlaylistGroupMutation = {
         } >,
         createdAt: string,
         updatedAt: string,
+        owner?: string | null,
       } | null >,
       nextToken?: string | null,
     } | null,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };
 
@@ -449,8 +457,9 @@ export type DeletePlaylistGroupMutation = {
           } | null,
           createdAt: string,
           updatedAt: string,
+          owner?: string | null,
         } | null,
-        playlistGroupId?: string | null,
+        playlistGroupId: string,
         nextPlaylists:  Array< {
           __typename: "NextPlaylist",
           playlistId: string,
@@ -458,11 +467,13 @@ export type DeletePlaylistGroupMutation = {
         } >,
         createdAt: string,
         updatedAt: string,
+        owner?: string | null,
       } | null >,
       nextToken?: string | null,
     } | null,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };
 
@@ -526,8 +537,9 @@ export type CreatePlaylistMutation = {
             name: string,
             createdAt: string,
             updatedAt: string,
+            owner?: string | null,
           } | null,
-          playlistGroupId?: string | null,
+          playlistGroupId: string,
           nextPlaylists:  Array< {
             __typename: "NextPlaylist",
             playlistId: string,
@@ -535,13 +547,15 @@ export type CreatePlaylistMutation = {
           } >,
           createdAt: string,
           updatedAt: string,
+          owner?: string | null,
         } | null >,
         nextToken?: string | null,
       } | null,
       createdAt: string,
       updatedAt: string,
+      owner?: string | null,
     } | null,
-    playlistGroupId?: string | null,
+    playlistGroupId: string,
     nextPlaylists:  Array< {
       __typename: "NextPlaylist",
       playlistId: string,
@@ -549,6 +563,7 @@ export type CreatePlaylistMutation = {
     } >,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };
 
@@ -612,8 +627,9 @@ export type UpdatePlaylistMutation = {
             name: string,
             createdAt: string,
             updatedAt: string,
+            owner?: string | null,
           } | null,
-          playlistGroupId?: string | null,
+          playlistGroupId: string,
           nextPlaylists:  Array< {
             __typename: "NextPlaylist",
             playlistId: string,
@@ -621,13 +637,15 @@ export type UpdatePlaylistMutation = {
           } >,
           createdAt: string,
           updatedAt: string,
+          owner?: string | null,
         } | null >,
         nextToken?: string | null,
       } | null,
       createdAt: string,
       updatedAt: string,
+      owner?: string | null,
     } | null,
-    playlistGroupId?: string | null,
+    playlistGroupId: string,
     nextPlaylists:  Array< {
       __typename: "NextPlaylist",
       playlistId: string,
@@ -635,6 +653,7 @@ export type UpdatePlaylistMutation = {
     } >,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };
 
@@ -698,8 +717,9 @@ export type DeletePlaylistMutation = {
             name: string,
             createdAt: string,
             updatedAt: string,
+            owner?: string | null,
           } | null,
-          playlistGroupId?: string | null,
+          playlistGroupId: string,
           nextPlaylists:  Array< {
             __typename: "NextPlaylist",
             playlistId: string,
@@ -707,13 +727,15 @@ export type DeletePlaylistMutation = {
           } >,
           createdAt: string,
           updatedAt: string,
+          owner?: string | null,
         } | null >,
         nextToken?: string | null,
       } | null,
       createdAt: string,
       updatedAt: string,
+      owner?: string | null,
     } | null,
-    playlistGroupId?: string | null,
+    playlistGroupId: string,
     nextPlaylists:  Array< {
       __typename: "NextPlaylist",
       playlistId: string,
@@ -721,6 +743,7 @@ export type DeletePlaylistMutation = {
     } >,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };
 
@@ -766,8 +789,9 @@ export type GetPlaylistGroupQuery = {
           } | null,
           createdAt: string,
           updatedAt: string,
+          owner?: string | null,
         } | null,
-        playlistGroupId?: string | null,
+        playlistGroupId: string,
         nextPlaylists:  Array< {
           __typename: "NextPlaylist",
           playlistId: string,
@@ -775,11 +799,13 @@ export type GetPlaylistGroupQuery = {
         } >,
         createdAt: string,
         updatedAt: string,
+        owner?: string | null,
       } | null >,
       nextToken?: string | null,
     } | null,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };
 
@@ -825,8 +851,9 @@ export type ListPlaylistGroupsQuery = {
             name: string,
             createdAt: string,
             updatedAt: string,
+            owner?: string | null,
           } | null,
-          playlistGroupId?: string | null,
+          playlistGroupId: string,
           nextPlaylists:  Array< {
             __typename: "NextPlaylist",
             playlistId: string,
@@ -834,11 +861,13 @@ export type ListPlaylistGroupsQuery = {
           } >,
           createdAt: string,
           updatedAt: string,
+          owner?: string | null,
         } | null >,
         nextToken?: string | null,
       } | null,
       createdAt: string,
       updatedAt: string,
+      owner?: string | null,
     } | null >,
     nextToken?: string | null,
   } | null,
@@ -903,8 +932,9 @@ export type GetPlaylistQuery = {
             name: string,
             createdAt: string,
             updatedAt: string,
+            owner?: string | null,
           } | null,
-          playlistGroupId?: string | null,
+          playlistGroupId: string,
           nextPlaylists:  Array< {
             __typename: "NextPlaylist",
             playlistId: string,
@@ -912,13 +942,15 @@ export type GetPlaylistQuery = {
           } >,
           createdAt: string,
           updatedAt: string,
+          owner?: string | null,
         } | null >,
         nextToken?: string | null,
       } | null,
       createdAt: string,
       updatedAt: string,
+      owner?: string | null,
     } | null,
-    playlistGroupId?: string | null,
+    playlistGroupId: string,
     nextPlaylists:  Array< {
       __typename: "NextPlaylist",
       playlistId: string,
@@ -926,6 +958,7 @@ export type GetPlaylistQuery = {
     } >,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };
 
@@ -970,16 +1003,18 @@ export type ListPlaylistsQuery = {
             id: string,
             name: string,
             plays: number,
-            playlistGroupId?: string | null,
+            playlistGroupId: string,
             createdAt: string,
             updatedAt: string,
+            owner?: string | null,
           } | null >,
           nextToken?: string | null,
         } | null,
         createdAt: string,
         updatedAt: string,
+        owner?: string | null,
       } | null,
-      playlistGroupId?: string | null,
+      playlistGroupId: string,
       nextPlaylists:  Array< {
         __typename: "NextPlaylist",
         playlistId: string,
@@ -987,6 +1022,7 @@ export type ListPlaylistsQuery = {
       } >,
       createdAt: string,
       updatedAt: string,
+      owner?: string | null,
     } | null >,
     nextToken?: string | null,
   } | null,
@@ -1035,16 +1071,18 @@ export type PlaylistsByPlaylistGroupIdQuery = {
             id: string,
             name: string,
             plays: number,
-            playlistGroupId?: string | null,
+            playlistGroupId: string,
             createdAt: string,
             updatedAt: string,
+            owner?: string | null,
           } | null >,
           nextToken?: string | null,
         } | null,
         createdAt: string,
         updatedAt: string,
+        owner?: string | null,
       } | null,
-      playlistGroupId?: string | null,
+      playlistGroupId: string,
       nextPlaylists:  Array< {
         __typename: "NextPlaylist",
         playlistId: string,
@@ -1052,6 +1090,7 @@ export type PlaylistsByPlaylistGroupIdQuery = {
       } >,
       createdAt: string,
       updatedAt: string,
+      owner?: string | null,
     } | null >,
     nextToken?: string | null,
   } | null,
@@ -1059,6 +1098,7 @@ export type PlaylistsByPlaylistGroupIdQuery = {
 
 export type OnCreatePlaylistGroupSubscriptionVariables = {
   filter?: ModelSubscriptionPlaylistGroupFilterInput | null,
+  owner?: string | null,
 };
 
 export type OnCreatePlaylistGroupSubscription = {
@@ -1099,8 +1139,9 @@ export type OnCreatePlaylistGroupSubscription = {
           } | null,
           createdAt: string,
           updatedAt: string,
+          owner?: string | null,
         } | null,
-        playlistGroupId?: string | null,
+        playlistGroupId: string,
         nextPlaylists:  Array< {
           __typename: "NextPlaylist",
           playlistId: string,
@@ -1108,16 +1149,19 @@ export type OnCreatePlaylistGroupSubscription = {
         } >,
         createdAt: string,
         updatedAt: string,
+        owner?: string | null,
       } | null >,
       nextToken?: string | null,
     } | null,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };
 
 export type OnUpdatePlaylistGroupSubscriptionVariables = {
   filter?: ModelSubscriptionPlaylistGroupFilterInput | null,
+  owner?: string | null,
 };
 
 export type OnUpdatePlaylistGroupSubscription = {
@@ -1158,8 +1202,9 @@ export type OnUpdatePlaylistGroupSubscription = {
           } | null,
           createdAt: string,
           updatedAt: string,
+          owner?: string | null,
         } | null,
-        playlistGroupId?: string | null,
+        playlistGroupId: string,
         nextPlaylists:  Array< {
           __typename: "NextPlaylist",
           playlistId: string,
@@ -1167,16 +1212,19 @@ export type OnUpdatePlaylistGroupSubscription = {
         } >,
         createdAt: string,
         updatedAt: string,
+        owner?: string | null,
       } | null >,
       nextToken?: string | null,
     } | null,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };
 
 export type OnDeletePlaylistGroupSubscriptionVariables = {
   filter?: ModelSubscriptionPlaylistGroupFilterInput | null,
+  owner?: string | null,
 };
 
 export type OnDeletePlaylistGroupSubscription = {
@@ -1217,8 +1265,9 @@ export type OnDeletePlaylistGroupSubscription = {
           } | null,
           createdAt: string,
           updatedAt: string,
+          owner?: string | null,
         } | null,
-        playlistGroupId?: string | null,
+        playlistGroupId: string,
         nextPlaylists:  Array< {
           __typename: "NextPlaylist",
           playlistId: string,
@@ -1226,16 +1275,19 @@ export type OnDeletePlaylistGroupSubscription = {
         } >,
         createdAt: string,
         updatedAt: string,
+        owner?: string | null,
       } | null >,
       nextToken?: string | null,
     } | null,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };
 
 export type OnCreatePlaylistSubscriptionVariables = {
   filter?: ModelSubscriptionPlaylistFilterInput | null,
+  owner?: string | null,
 };
 
 export type OnCreatePlaylistSubscription = {
@@ -1293,8 +1345,9 @@ export type OnCreatePlaylistSubscription = {
             name: string,
             createdAt: string,
             updatedAt: string,
+            owner?: string | null,
           } | null,
-          playlistGroupId?: string | null,
+          playlistGroupId: string,
           nextPlaylists:  Array< {
             __typename: "NextPlaylist",
             playlistId: string,
@@ -1302,13 +1355,15 @@ export type OnCreatePlaylistSubscription = {
           } >,
           createdAt: string,
           updatedAt: string,
+          owner?: string | null,
         } | null >,
         nextToken?: string | null,
       } | null,
       createdAt: string,
       updatedAt: string,
+      owner?: string | null,
     } | null,
-    playlistGroupId?: string | null,
+    playlistGroupId: string,
     nextPlaylists:  Array< {
       __typename: "NextPlaylist",
       playlistId: string,
@@ -1316,11 +1371,13 @@ export type OnCreatePlaylistSubscription = {
     } >,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };
 
 export type OnUpdatePlaylistSubscriptionVariables = {
   filter?: ModelSubscriptionPlaylistFilterInput | null,
+  owner?: string | null,
 };
 
 export type OnUpdatePlaylistSubscription = {
@@ -1378,8 +1435,9 @@ export type OnUpdatePlaylistSubscription = {
             name: string,
             createdAt: string,
             updatedAt: string,
+            owner?: string | null,
           } | null,
-          playlistGroupId?: string | null,
+          playlistGroupId: string,
           nextPlaylists:  Array< {
             __typename: "NextPlaylist",
             playlistId: string,
@@ -1387,13 +1445,15 @@ export type OnUpdatePlaylistSubscription = {
           } >,
           createdAt: string,
           updatedAt: string,
+          owner?: string | null,
         } | null >,
         nextToken?: string | null,
       } | null,
       createdAt: string,
       updatedAt: string,
+      owner?: string | null,
     } | null,
-    playlistGroupId?: string | null,
+    playlistGroupId: string,
     nextPlaylists:  Array< {
       __typename: "NextPlaylist",
       playlistId: string,
@@ -1401,11 +1461,13 @@ export type OnUpdatePlaylistSubscription = {
     } >,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };
 
 export type OnDeletePlaylistSubscriptionVariables = {
   filter?: ModelSubscriptionPlaylistFilterInput | null,
+  owner?: string | null,
 };
 
 export type OnDeletePlaylistSubscription = {
@@ -1463,8 +1525,9 @@ export type OnDeletePlaylistSubscription = {
             name: string,
             createdAt: string,
             updatedAt: string,
+            owner?: string | null,
           } | null,
-          playlistGroupId?: string | null,
+          playlistGroupId: string,
           nextPlaylists:  Array< {
             __typename: "NextPlaylist",
             playlistId: string,
@@ -1472,13 +1535,15 @@ export type OnDeletePlaylistSubscription = {
           } >,
           createdAt: string,
           updatedAt: string,
+          owner?: string | null,
         } | null >,
         nextToken?: string | null,
       } | null,
       createdAt: string,
       updatedAt: string,
+      owner?: string | null,
     } | null,
-    playlistGroupId?: string | null,
+    playlistGroupId: string,
     nextPlaylists:  Array< {
       __typename: "NextPlaylist",
       playlistId: string,
@@ -1486,5 +1551,6 @@ export type OnDeletePlaylistSubscription = {
     } >,
     createdAt: string,
     updatedAt: string,
+    owner?: string | null,
   } | null,
 };

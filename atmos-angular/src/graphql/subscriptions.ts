@@ -5,8 +5,9 @@
 export const onCreatePlaylistGroup = /* GraphQL */ `
   subscription OnCreatePlaylistGroup(
     $filter: ModelSubscriptionPlaylistGroupFilterInput
+    $owner: String
   ) {
-    onCreatePlaylistGroup(filter: $filter) {
+    onCreatePlaylistGroup(filter: $filter, owner: $owner) {
       id
       name
       Playlists {
@@ -36,6 +37,7 @@ export const onCreatePlaylistGroup = /* GraphQL */ `
             }
             createdAt
             updatedAt
+            owner
           }
           playlistGroupId
           nextPlaylists {
@@ -44,19 +46,22 @@ export const onCreatePlaylistGroup = /* GraphQL */ `
           }
           createdAt
           updatedAt
+          owner
         }
         nextToken
       }
       createdAt
       updatedAt
+      owner
     }
   }
 `;
 export const onUpdatePlaylistGroup = /* GraphQL */ `
   subscription OnUpdatePlaylistGroup(
     $filter: ModelSubscriptionPlaylistGroupFilterInput
+    $owner: String
   ) {
-    onUpdatePlaylistGroup(filter: $filter) {
+    onUpdatePlaylistGroup(filter: $filter, owner: $owner) {
       id
       name
       Playlists {
@@ -86,6 +91,7 @@ export const onUpdatePlaylistGroup = /* GraphQL */ `
             }
             createdAt
             updatedAt
+            owner
           }
           playlistGroupId
           nextPlaylists {
@@ -94,19 +100,22 @@ export const onUpdatePlaylistGroup = /* GraphQL */ `
           }
           createdAt
           updatedAt
+          owner
         }
         nextToken
       }
       createdAt
       updatedAt
+      owner
     }
   }
 `;
 export const onDeletePlaylistGroup = /* GraphQL */ `
   subscription OnDeletePlaylistGroup(
     $filter: ModelSubscriptionPlaylistGroupFilterInput
+    $owner: String
   ) {
-    onDeletePlaylistGroup(filter: $filter) {
+    onDeletePlaylistGroup(filter: $filter, owner: $owner) {
       id
       name
       Playlists {
@@ -136,6 +145,7 @@ export const onDeletePlaylistGroup = /* GraphQL */ `
             }
             createdAt
             updatedAt
+            owner
           }
           playlistGroupId
           nextPlaylists {
@@ -144,17 +154,22 @@ export const onDeletePlaylistGroup = /* GraphQL */ `
           }
           createdAt
           updatedAt
+          owner
         }
         nextToken
       }
       createdAt
       updatedAt
+      owner
     }
   }
 `;
 export const onCreatePlaylist = /* GraphQL */ `
-  subscription OnCreatePlaylist($filter: ModelSubscriptionPlaylistFilterInput) {
-    onCreatePlaylist(filter: $filter) {
+  subscription OnCreatePlaylist(
+    $filter: ModelSubscriptionPlaylistFilterInput
+    $owner: String
+  ) {
+    onCreatePlaylist(filter: $filter, owner: $owner) {
       id
       name
       plays
@@ -199,6 +214,7 @@ export const onCreatePlaylist = /* GraphQL */ `
               name
               createdAt
               updatedAt
+              owner
             }
             playlistGroupId
             nextPlaylists {
@@ -207,11 +223,13 @@ export const onCreatePlaylist = /* GraphQL */ `
             }
             createdAt
             updatedAt
+            owner
           }
           nextToken
         }
         createdAt
         updatedAt
+        owner
       }
       playlistGroupId
       nextPlaylists {
@@ -220,12 +238,16 @@ export const onCreatePlaylist = /* GraphQL */ `
       }
       createdAt
       updatedAt
+      owner
     }
   }
 `;
 export const onUpdatePlaylist = /* GraphQL */ `
-  subscription OnUpdatePlaylist($filter: ModelSubscriptionPlaylistFilterInput) {
-    onUpdatePlaylist(filter: $filter) {
+  subscription OnUpdatePlaylist(
+    $filter: ModelSubscriptionPlaylistFilterInput
+    $owner: String
+  ) {
+    onUpdatePlaylist(filter: $filter, owner: $owner) {
       id
       name
       plays
@@ -270,6 +292,7 @@ export const onUpdatePlaylist = /* GraphQL */ `
               name
               createdAt
               updatedAt
+              owner
             }
             playlistGroupId
             nextPlaylists {
@@ -278,11 +301,13 @@ export const onUpdatePlaylist = /* GraphQL */ `
             }
             createdAt
             updatedAt
+            owner
           }
           nextToken
         }
         createdAt
         updatedAt
+        owner
       }
       playlistGroupId
       nextPlaylists {
@@ -291,12 +316,16 @@ export const onUpdatePlaylist = /* GraphQL */ `
       }
       createdAt
       updatedAt
+      owner
     }
   }
 `;
 export const onDeletePlaylist = /* GraphQL */ `
-  subscription OnDeletePlaylist($filter: ModelSubscriptionPlaylistFilterInput) {
-    onDeletePlaylist(filter: $filter) {
+  subscription OnDeletePlaylist(
+    $filter: ModelSubscriptionPlaylistFilterInput
+    $owner: String
+  ) {
+    onDeletePlaylist(filter: $filter, owner: $owner) {
       id
       name
       plays
@@ -341,6 +370,7 @@ export const onDeletePlaylist = /* GraphQL */ `
               name
               createdAt
               updatedAt
+              owner
             }
             playlistGroupId
             nextPlaylists {
@@ -349,11 +379,13 @@ export const onDeletePlaylist = /* GraphQL */ `
             }
             createdAt
             updatedAt
+            owner
           }
           nextToken
         }
         createdAt
         updatedAt
+        owner
       }
       playlistGroupId
       nextPlaylists {
@@ -362,6 +394,7 @@ export const onDeletePlaylist = /* GraphQL */ `
       }
       createdAt
       updatedAt
+      owner
     }
   }
 `;

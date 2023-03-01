@@ -5,8 +5,7 @@ const awsmobile = {
     "aws_project_region": "ap-southeast-2",
     "aws_appsync_graphqlEndpoint": "https://zm4pkukrird2dopljxeubecfpe.appsync-api.ap-southeast-2.amazonaws.com/graphql",
     "aws_appsync_region": "ap-southeast-2",
-    "aws_appsync_authenticationType": "API_KEY",
-    "aws_appsync_apiKey": "da2-gqu6xn4khfflpcdiriuz6izvru",
+    "aws_appsync_authenticationType": "AMAZON_COGNITO_USER_POOLS",
     "aws_cognito_identity_pool_id": "ap-southeast-2:4cb38441-6f63-4447-a63f-0199bffd5bcf",
     "aws_cognito_region": "ap-southeast-2",
     "aws_user_pools_id": "ap-southeast-2_lo9OK7xEF",
@@ -20,8 +19,8 @@ const awsmobile = {
             "profile",
             "aws.cognito.signin.user.admin"
         ],
-        "redirectSignIn": "http://localhost:3000/",
-        "redirectSignOut": "http://localhost:3000/",
+        "redirectSignIn": "http://localhost:3000/,https://atmos.samhenry.tech/",
+        "redirectSignOut": "http://localhost:3000/,https://atmos.samhenry.tech/",
         "responseType": "code"
     },
     "federationTarget": "COGNITO_USER_POOLS",

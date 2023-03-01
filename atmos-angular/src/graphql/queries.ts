@@ -34,6 +34,7 @@ export const getPlaylistGroup = /* GraphQL */ `
             }
             createdAt
             updatedAt
+            owner
           }
           playlistGroupId
           nextPlaylists {
@@ -42,11 +43,13 @@ export const getPlaylistGroup = /* GraphQL */ `
           }
           createdAt
           updatedAt
+          owner
         }
         nextToken
       }
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -84,6 +87,7 @@ export const listPlaylistGroups = /* GraphQL */ `
               name
               createdAt
               updatedAt
+              owner
             }
             playlistGroupId
             nextPlaylists {
@@ -92,11 +96,13 @@ export const listPlaylistGroups = /* GraphQL */ `
             }
             createdAt
             updatedAt
+            owner
           }
           nextToken
         }
         createdAt
         updatedAt
+        owner
       }
       nextToken
     }
@@ -149,6 +155,7 @@ export const getPlaylist = /* GraphQL */ `
               name
               createdAt
               updatedAt
+              owner
             }
             playlistGroupId
             nextPlaylists {
@@ -157,11 +164,13 @@ export const getPlaylist = /* GraphQL */ `
             }
             createdAt
             updatedAt
+            owner
           }
           nextToken
         }
         createdAt
         updatedAt
+        owner
       }
       playlistGroupId
       nextPlaylists {
@@ -170,6 +179,7 @@ export const getPlaylist = /* GraphQL */ `
       }
       createdAt
       updatedAt
+      owner
     }
   }
 `;
@@ -209,11 +219,13 @@ export const listPlaylists = /* GraphQL */ `
               playlistGroupId
               createdAt
               updatedAt
+              owner
             }
             nextToken
           }
           createdAt
           updatedAt
+          owner
         }
         playlistGroupId
         nextPlaylists {
@@ -222,6 +234,7 @@ export const listPlaylists = /* GraphQL */ `
         }
         createdAt
         updatedAt
+        owner
       }
       nextToken
     }
@@ -271,11 +284,13 @@ export const playlistsByPlaylistGroupId = /* GraphQL */ `
               playlistGroupId
               createdAt
               updatedAt
+              owner
             }
             nextToken
           }
           createdAt
           updatedAt
+          owner
         }
         playlistGroupId
         nextPlaylists {
@@ -284,6 +299,7 @@ export const playlistsByPlaylistGroupId = /* GraphQL */ `
         }
         createdAt
         updatedAt
+        owner
       }
       nextToken
     }

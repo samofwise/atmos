@@ -1,5 +1,5 @@
-<section style="margin-top: 10px; text-align: right;">
-  <button mat-icon-button><mat-icon>edit</mat-icon></button>add toggle for editing
+<section style="margin-top: 10px; text-align: right; width: 100%">
+  <button mat-icon-button (click)="toggleIsEditing()"><mat-icon>{{!isEditing ? 'edit': 'done'}}</mat-icon></button>
   <a mat-icon-button routerLink="playlists/new"><mat-icon>add</mat-icon></a>
 </section>
 <section id="playlists">

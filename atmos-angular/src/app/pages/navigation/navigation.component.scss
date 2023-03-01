@@ -5,6 +5,9 @@ mat-toolbar {
   position: sticky;
   top: 0;
   z-index: 1000;
+  label{
+    font-size: 14px;
+  }
 }
 
 mat-sidenav-container {

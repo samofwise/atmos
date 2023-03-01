@@ -3,6 +3,14 @@ section {
   font-size: 40px;
   line-height: normal;
   background-color: none;
+  img {
+    width: 200px;
+    max-width: 100%;
+  }
+
+  @media (max-width: 475px) {
+    font-size: 25px;
+  }
 }
 
 #musicNotesTile {
@@ -22,5 +30,7 @@ section {
 }
 
 #fadingMusicNotes {
+  width: 800px;
+  max-width: 120vw;
   mask-image: linear-gradient(to right, rgba(0, 0, 0, 1) 25%, transparent 80%)
 }

@@ -8,6 +8,7 @@
   <span class="example-spacer"></span>
   <button mat-button style="margin-left: auto;" (click)="toggleShowSignIn()" *ngIf="!auth.authenticated">Sign
     In</button>
+  <label style="margin-left: auto;" *ngIf="auth.authenticated">Hey {{auth.name}}</label>
 </mat-toolbar>
 
 <mat-sidenav-container>

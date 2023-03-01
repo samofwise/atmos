@@ -27,7 +27,7 @@ export class PlaylistGroupService {
     variables: { id },
   }) as GraphQLResult<GetPlaylistGroupQuery>).data?.getPlaylistGroup ?? {}) as PlaylistGroup;
 
-  createPlaylistGroup = async (input: CreatePlaylistGroupInput) => (API.graphql({
+  createPlaylistGroup = async (input: CreatePlaylistGroupInput) => (await API.graphql({
     query: create,
     variables: { input },
   }) as GraphQLResult<CreatePlaylistGroupMutation>).data?.createPlaylistGroup as PlaylistGroup;
