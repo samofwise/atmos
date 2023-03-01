@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Auth } from 'aws-amplify';
-import { routes } from '../../app-routing.module';
+import { CustomRoute, routes } from '../../app-routing.module';
 import { AuthModel, AuthService } from '../../services/auth.service';
 import { ShowSigninService } from '../../services/showSignin.service';
 
@@ -12,10 +12,12 @@ import { ShowSigninService } from '../../services/showSignin.service';
 export class NavigationComponent implements OnInit {
   events: string[] = [];
   opened: boolean = false;
-  links = routes;
+  links: CustomRoute[];
   auth: AuthModel = {} as AuthModel;
 
-  constructor(private showSigninService: ShowSigninService, private authService: AuthService) {}
+  constructor(private showSigninService: ShowSigninService, private authService: AuthService) {
+    this.links = routes.filter(r => !r.hide);
+  }
 
   ngOnInit() {
     this.authService.auth.subscribe(a => this.auth = a);

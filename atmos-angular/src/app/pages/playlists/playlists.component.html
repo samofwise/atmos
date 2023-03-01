@@ -5,10 +5,11 @@
 <section id="playlists">
   <mat-card *ngFor="let playlistGroup of playlistGroups">
     <mat-card-content>
-      <article class="image-list">
-        <img *ngFor="let image of playlistGroup.images" src="{{image}}"
-          alt="" /><!-- className={isEditing ? 'blurred' : ''} -->
-      </article>
+      <mat-grid-list cols="2" gutterSize="10px">
+        <mat-grid-tile *ngFor="let image of playlistGroup.images">
+          <img src="{{image}}" alt="" /><!-- className={isEditing ? 'blurred' : ''} -->
+        </mat-grid-tile>
+      </mat-grid-list>
       <h2 style="text-align: center; z-index: 10;">
         {{playlistGroup.name}}
       </h2>

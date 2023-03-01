@@ -16,6 +16,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
 
@@ -27,6 +28,10 @@ import { Amplify } from 'aws-amplify';
 import awsconfig from '../aws-exports';
 import { initServicesFactory } from './factories/initServicesFactory';
 import { AuthService } from './services/auth.service';
+import { PlaylistEditComponent } from './pages/playlist-edit/playlist-edit.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { MatInputModule } from '@angular/material/input';
 
 // aws-sdk requires global to exist
 (window as any).global = window;
@@ -42,7 +47,8 @@ Amplify.configure(awsconfig);
     HomeTitleComponent,
     AppNameComponent,
     NavigationComponent,
-    IndexComponent
+    IndexComponent,
+    PlaylistEditComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +61,10 @@ Amplify.configure(awsconfig);
     MatButtonModule,
     MatListModule,
     AmplifyAuthenticatorModule,
-    MatCardModule
+    MatCardModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule
   ],
   providers: [{
     provide: APP_INITIALIZER,

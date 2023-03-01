@@ -1,0 +1,14 @@
+<mat-card>
+  <h2 style="text-align: center;">{{isNew ? 'New ' : 'Edit '}}Playlist Group</h2>
+  <mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <input matInput [formControl]="name" required />
+  </mat-form-field>
+
+ <!-- TODO Add ability to create playlists and select songs for them -->
+
+  <section style="text-align: right;">
+    <button mat-button style="margin-left: 10px;">Cancel</button>
+    <button mat-flat-button color="primary" style="margin-left: 10px;" (click)="submit()">Done</button>
+  </section>
+</mat-card>
