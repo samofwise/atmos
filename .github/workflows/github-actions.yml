@@ -13,12 +13,9 @@ jobs:
         with:
           node-version: '14'
           
-      - name: npm install
-        run: npm install
+      - run: npm install
         
       - run: npm run build
-      
-      - run: ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/   /' -e 's/-/|/'
       
       - name: Deploy static site to S3 bucket
         uses: jakejarvis/s3-sync-action@master
