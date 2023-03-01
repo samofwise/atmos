@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { AuthModel, AuthService } from '../services/auth.service';
-import { ShowSigninService } from '../services/showSignin.service';
+import { AuthModel, AuthService } from '../../services/auth.service';
+import { ShowSigninService } from '../../services/showSignin.service';
 
 @Component({
   selector: 'app-index',

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Auth } from 'aws-amplify';
-import { routes } from '../app-routing.module';
-import { AuthModel, AuthService } from '../services/auth.service';
-import { ShowSigninService } from '../services/showSignin.service';
+import { routes } from '../../app-routing.module';
+import { AuthModel, AuthService } from '../../services/auth.service';
+import { ShowSigninService } from '../../services/showSignin.service';
 
 @Component({
   selector: 'app-navigation',
