@@ -19,6 +19,8 @@ import { MatListModule } from '@angular/material/list';
 import { AppNameComponent } from './app-name/app-name.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { IndexComponent } from './index/index.component';
+
+import { Amplify } from 'aws-amplify';
 import awsconfig from '../aws-exports';
 
 Amplify.configure(awsconfig);
