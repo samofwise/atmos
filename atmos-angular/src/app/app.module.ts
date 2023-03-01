@@ -32,11 +32,12 @@ import { PlaylistEditComponent } from './pages/playlist-edit/playlist-edit.compo
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { MatInputModule } from '@angular/material/input';
+import { updateAwsExports } from 'src/utils/awsUtils';
 
 // aws-sdk requires global to exist
 (window as any).global = window;
 
-Amplify.configure(awsconfig);
+Amplify.configure(updateAwsExports(awsconfig));
 
 @NgModule({
   declarations: [
