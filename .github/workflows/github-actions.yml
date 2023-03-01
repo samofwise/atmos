@@ -2,14 +2,39 @@ name: github-actions
 run-name: atmos deploy by ${{ github.actor }}
 on: [push]
 jobs:
-  build and deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./atmos-angular
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: '14'
-      - run: npm install -g bats
-      - run: bats -v
+          
+      - name: npm install
+        run: npm install
+        
+      - run: npm run build
+      
+      - name: Upload to Amazon S3 Action
+        uses: Noelware/s3-action@2.1.0
+        with:
+          directories: dist 
+          access-key-id: 
+          secret-key: 
+          prefix: atmos/
+          bucket: s3://projects.samhenry.tech
+          region: ap-southeast-2
+          
+          #files: default - empty
+          #path-format: default - $(prefix)/$(file)
+          #endpoint: default - s3.amazonaws.com
+          #bucket-acl: default - public-read
+          #object-acl: default - public-read
+          #exclude: default - empty
+          #follow-symlinks: default - false
+          #enforce-path-access-style: default - false
 
 
