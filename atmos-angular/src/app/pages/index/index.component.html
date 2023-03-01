@@ -1,15 +1,7 @@
 
 <app-home *ngIf="!auth.isLoading && !auth.authenticated && !showSignIn" />
 
-<amplify-authenticator *ngIf="!auth.isLoading && !auth.authenticated && showSignIn">
-  <!-- <ng-template
-    amplifySlot="authenticated"
-    let-user="user"
-    let-signOut="signOut"
-  >
-    <button (click)="signOut()">Sign Out</button>
-  </ng-template> -->
-</amplify-authenticator>
+<amplify-authenticator style="display:block; margin-top: 20px;" *ngIf="!auth.isLoading && !auth.authenticated && showSignIn" />
 
 <app-playlists *ngIf="!auth.isLoading && auth.authenticated" />
 

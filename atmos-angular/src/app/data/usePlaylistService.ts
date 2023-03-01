@@ -1,37 +1,39 @@
-import { GraphQLResult } from '@aws-amplify/api-graphql';
-import { API } from 'aws-amplify';
-import { CreatePlaylistInput, GetPlaylistQuery, ListPlaylistsQuery, UpdatePlaylistInput } from '../api/api';
-import { createPlaylist as create, updatePlaylist as update, deletePlaylist as deleteMutation } from '../graphql/mutations';
-import { getPlaylist as getPlaylistQuery, listPlaylists } from '../graphql/queries';
+//// Use later when need to create playlists
 
-const usePlaylistService = () => {
-  // const { authenticated } = useContext(AuthContext);
+// import { GraphQLResult } from '@aws-amplify/api-graphql';
+// import { API } from 'aws-amplify';
+// import { CreatePlaylistInput, GetPlaylistQuery, ListPlaylistsQuery, UpdatePlaylistInput } from '../api/api';
+// import { createPlaylist as create, updatePlaylist as update, deletePlaylist as deleteMutation } from '../graphql/mutations';
+// import { getPlaylist as getPlaylistQuery, listPlaylists } from '../graphql/queries';
 
-  const getPlaylists = async () => (await API.graphql(
-    { query: listPlaylists },
-  ) as GraphQLResult<ListPlaylistsQuery>).data?.listPlaylists?.items;
+// const usePlaylistService = () => {
+//   // const { authenticated } = useContext(AuthContext);
 
-  const getPlaylist = async (id: string) => (await API.graphql({
-    query: getPlaylistQuery,
-    variables: { id },
-  }) as GraphQLResult<GetPlaylistQuery>).data?.getPlaylist;
+//   const getPlaylists = async () => (await API.graphql(
+//     { query: listPlaylists },
+//   ) as GraphQLResult<ListPlaylistsQuery>).data?.listPlaylists?.items;
 
-  const createPlaylist = (input: CreatePlaylistInput) => API.graphql({
-    query: create,
-    variables: { input },
-  });
+//   const getPlaylist = async (id: string) => (await API.graphql({
+//     query: getPlaylistQuery,
+//     variables: { id },
+//   }) as GraphQLResult<GetPlaylistQuery>).data?.getPlaylist;
 
-  const updatePlaylist = (input: UpdatePlaylistInput) => API.graphql({
-    query: update,
-    variables: { input },
-  });
+//   const createPlaylist = (input: CreatePlaylistInput) => API.graphql({
+//     query: create,
+//     variables: { input },
+//   });
 
-  const deletePlaylist = (id: string) => API.graphql({
-    query: deleteMutation,
-    variables: { input: { id } },
-  });
+//   const updatePlaylist = (input: UpdatePlaylistInput) => API.graphql({
+//     query: update,
+//     variables: { input },
+//   });
 
-  return { getPlaylists, getPlaylist, createPlaylist, updatePlaylist, deletePlaylist };
-};
+//   const deletePlaylist = (id: string) => API.graphql({
+//     query: deleteMutation,
+//     variables: { input: { id } },
+//   });
 
-export default usePlaylistService;
+//   return { getPlaylists, getPlaylist, createPlaylist, updatePlaylist, deletePlaylist };
+// };
+
+// export default usePlaylistService;

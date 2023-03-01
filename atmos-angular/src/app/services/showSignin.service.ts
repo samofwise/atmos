@@ -8,7 +8,5 @@ import { BehaviorSubject, Subject } from 'rxjs';
 export class ShowSigninService {
   showSignin = new BehaviorSubject<boolean>(false);
 
-  toggleShowSignin() {
-    this.showSignin.next(!this.showSignin.value);
-  }
+  toggleShowSignin = () => this.showSignin.next(!this.showSignin.value);
 }
