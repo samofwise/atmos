@@ -48,7 +48,7 @@ testem.log
 **/amplify/backend/.temp
 **/build/
 **/dist/
-aws-exports.js
+atmos-react/aws-exports.js
 awsconfiguration.json
 amplifyconfiguration.json
 amplifyconfiguration.dart
