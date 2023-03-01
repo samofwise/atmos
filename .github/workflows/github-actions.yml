@@ -29,5 +29,5 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_EXTERNALDEPLOYMENT_KEYID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_EXTERNALDEPLOYMENT_SECRET }}
           AWS_REGION: 'ap-southeast-2'
-          SOURCE_DIR: 'dist/atmos'
+          SOURCE_DIR: './atmos-angular/dist/atmos'
           DEST_DIR: 'atmos'
