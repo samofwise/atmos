@@ -19,6 +19,9 @@ import { MatListModule } from '@angular/material/list';
 import { AppNameComponent } from './app-name/app-name.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { IndexComponent } from './index/index.component';
+import awsconfig from '../aws-exports';
+
+Amplify.configure(awsconfig);
 
 @NgModule({
   declarations: [
