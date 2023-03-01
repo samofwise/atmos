@@ -22,8 +22,8 @@ jobs:
         uses: Noelware/s3-action@2.1.0
         with:
           directories: dist 
-          access-key-id: 
-          secret-key: 
+          access-key-id: AKIA5FHKA3ARWBQOEOF6
+          secret-key: $AWS_EXTERNALDEPLOYMENT_SECRET
           prefix: atmos/
           bucket: s3://projects.samhenry.tech
           region: ap-southeast-2
