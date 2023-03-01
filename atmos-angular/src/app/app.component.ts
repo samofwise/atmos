@@ -8,6 +8,8 @@ import { applyParalax, getParalaxScroll } from '../utils/utils'
 })
 export class AppComponent {
   title = 'atmos';
+  showSignIn = false;
+
   @HostListener('window:scroll', ['$event'])
   onScroll(event: Event) {
     getParalaxScroll(event)((offset) => {

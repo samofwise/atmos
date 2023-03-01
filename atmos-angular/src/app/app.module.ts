@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -16,12 +16,19 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 
-import { AppNameComponent } from './app-name/app-name.component';
+import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
+
+import { AppNameComponent } from './common/app-name/app-name.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { IndexComponent } from './index/index.component';
 
 import { Amplify } from 'aws-amplify';
 import awsconfig from '../aws-exports';
+import { initServicesFactory } from './factories/initServicesFactory';
+import { AuthService } from './services/auth.service';
+
+// aws-sdk requires global to exist
+(window as any).global = window;
 
 Amplify.configure(awsconfig);
 
@@ -45,9 +52,15 @@ Amplify.configure(awsconfig);
     MatIconModule,
     MatSidenavModule,
     MatButtonModule,
-    MatListModule
+    MatListModule,
+    AmplifyAuthenticatorModule
   ],
-  providers: [],
+  providers: [{
+    provide: APP_INITIALIZER,
+    useFactory: initServicesFactory,
+    deps: [AuthService],
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

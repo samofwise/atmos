@@ -5,6 +5,19 @@ mat-toolbar {
   z-index: 1000;
 }
 
+
+
 mat-sidenav-container {
+  // position: absolute;
+  // top: 64px;
+  // left: 0;
+  // height: calc(100vh - 64px);
+  // width: 100%;
+  // z-index: 999;
   background: none;
+  min-height: calc(100vh - 64px);
+}
+
+mat-sidenav{
+
 }

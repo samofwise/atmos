@@ -31,11 +31,12 @@
     "strictInputAccessModifiers": true,
     "strictTemplates": true
   },
+  "files": [
+    "src/awsPolyfill.ts"
+  ],
   "include": [
+    "**/*.*",
     "src/*.*",
     "aws-exports.js"
-  ],
-  "exclude": [
-    "atmos-react/react"
   ]
 }

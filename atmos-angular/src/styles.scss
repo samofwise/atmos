@@ -1,11 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import '~@aws-amplify/ui-angular/theme.css';
+
 html,
-body {
-  min-height: 100%;
+body,
+app-root {
+  min-height: 100vh;
 }
 
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+// Fix Aws view
+
+p.amplify-authenticator__federated-text{ margin: 0;}

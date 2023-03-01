@@ -4,6 +4,7 @@
   </button>
   <app-app-name />
   <span class="example-spacer"></span>
+  <button mat-button style="margin-left: auto;" (click)="toggleShowSignIn()" *ngIf="!auth.authenticated">Sign In</button>
 </mat-toolbar>
 
 <mat-sidenav-container>
@@ -11,12 +12,9 @@
     <mat-nav-list role="list">
       <a mat-list-item routerLink="{{ link.path }}" *ngFor="let link of links" (click)="sidenav.toggle()">{{ link.title
         }}</a>
+      <a mat-list-item style="margin-top: 20px;" (click)="signOut()" (click)="sidenav.toggle()" *ngIf="auth.authenticated">Sign Out</a>
       <!-- [activated]="link.isActive" -->
     </mat-nav-list>
   </mat-sidenav>
-
-  <mat-sidenav-content>
-
-    <ng-content></ng-content>
-  </mat-sidenav-content>
+  <mat-sidenav-content><ng-content></ng-content></mat-sidenav-content>
 </mat-sidenav-container>

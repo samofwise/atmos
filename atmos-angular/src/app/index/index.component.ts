@@ -1,9 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { AuthModel, AuthService } from '../services/auth.service';
+import { ShowSigninService } from '../services/showSignin.service';
 
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
+  styleUrls: ['index.component.scss']
 })
-export class IndexComponent {
+export class IndexComponent implements OnInit {
+  auth: AuthModel = {} as AuthModel;
   showSignIn: boolean = false;
+
+  constructor(private authService: AuthService, private showSigninService: ShowSigninService) { }
+
+  ngOnInit(): void {
+    this.authService.auth.subscribe(v => this.auth = v);
+    this.showSigninService.showSignin.subscribe(v => this.showSignIn = v)
+  }
 }
