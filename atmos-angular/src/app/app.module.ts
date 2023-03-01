@@ -15,6 +15,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
 
 import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
 
@@ -53,7 +54,8 @@ Amplify.configure(awsconfig);
     MatSidenavModule,
     MatButtonModule,
     MatListModule,
-    AmplifyAuthenticatorModule
+    AmplifyAuthenticatorModule,
+    MatCardModule
   ],
   providers: [{
     provide: APP_INITIALIZER,
