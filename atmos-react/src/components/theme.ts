@@ -28,6 +28,7 @@ export const heightWithoutBar = (t: Theme) => {
   const { toolbar } = t.mixins;
   const styles: CSSProperties = ({
     height: `calc(100vh - ${toolbar.minHeight}px)`,
+// eslint-disable  @typescript-eslint/no-explicit-any
     [`${t.breakpoints.up('xs')} and (orientation: landscape)`]: { height: `calc(100vh - ${(toolbar[t.breakpoints.up('xs')] as any)['@media (orientation: landscape)'].minHeight}px)` },
     [`${t.breakpoints.up('sm')}`]: { height: `calc(100vh - ${(toolbar[t.breakpoints.up('sm')] as CSSProperties).minHeight}px)` },
   });

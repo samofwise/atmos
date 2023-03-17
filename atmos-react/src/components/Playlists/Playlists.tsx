@@ -29,7 +29,7 @@ function Playlists() {
   useEffect(() => { loadData(); }, [loadData]);
   const [isEditing, setIsEditing] = useState(false);
   const { api } = useSpotify();
-  const [devices, setDevices] = useState<SpotifyApi.UserDevice[]>();
+  const setDevices = useState<SpotifyApi.UserDevice[]>()[1];
 
   useEffect(() => {
     (async () => setDevices((await api.getMyDevices()).devices))();

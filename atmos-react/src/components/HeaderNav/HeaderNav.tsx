@@ -8,7 +8,7 @@ import AuthContext from '../../contexts/AuthContext';
 import AppName from '../common/AppName';
 
 function HeaderNav() {
-  const { authenticated } = useContext(AuthContext) ?? {};
+  // const { authenticated } = useContext(AuthContext) ?? {};
   const [navShow, setNavShow] = useState(false);
   const toggleNav = () => setNavShow((s) => !s);
 

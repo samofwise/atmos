@@ -6,7 +6,7 @@ import SpotifyListDetail from '../Spotify/SpotifyListDetail';
 
 function PlayBar() {
   const {
-    playModel, resume, pause, next, connect, status, currentTrack,
+    playModel, resume, pause, next, status, currentTrack,
     isLoading,
   } = usePlayService();
 

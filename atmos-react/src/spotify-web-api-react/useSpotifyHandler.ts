@@ -6,7 +6,7 @@ import useSpotify from './useSpotify';
 
 const useSpotifyHandler = (redirect?: 'off' | 'alert') => {
   const { credentials, redirectWithImplicitGrantFlow, setAccessToken } = useSpotify();
-  const player = useSpotifyPlayer();
+  // const player = useSpotifyPlayer();
   const { hash, pathname } = useMemo(() => window.location, [window.location]);
   const [accessTokenStorage] = useLocalStorageState<string>('accessToken');
   const [accessTokenExpiry] = useLocalStorageState<string>('accessTokenExpiry');

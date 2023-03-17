@@ -16,7 +16,7 @@ interface Props {
 }
 
 export function SpotifyProvider({ children, credentials }: Props) {
-  const [accessTokenStorage, setAccessTokenStorage] = useLocalStorageState<string>('accessToken');
+  const [accessTokenStorage] = useLocalStorageState<string>('accessToken');
 
   const api = useMemo(() => (new SpotifyWebApi()), []);
   const model = useMemo(

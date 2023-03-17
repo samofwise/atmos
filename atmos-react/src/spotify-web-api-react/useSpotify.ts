@@ -11,7 +11,7 @@ const useSpotify = () => {
     getImplicitGrantUrl,
   } = useSpotifyBase(credentials);
   const [accessTokenStorage, setAccessTokenStorage] = useLocalStorageState<string>('accessToken');
-  const [accessTokenExpiry, setAccessTokenExpiry] = useLocalStorageState<Date>('accessTokenExpiry');
+  const setAccessTokenExpiry = useLocalStorageState<Date>('accessTokenExpiry')[1];
 
   const setAccessToken = (accessToken: string, expiresIn: number) => {
     setAccessTokenStorage(accessToken);

@@ -5,7 +5,6 @@ import { styled } from '@mui/material';
 import { Mixins } from '@mui/material/styles';
 
 function SignIn() {
-  const navigate = useNavigate();
 
   return (
     <CenteredContent>

@@ -17,12 +17,12 @@ const usePlayService = () => {
   const isLoading = useMemo(() => !!state?.loading, [state]);
 
   useEffect(() => {
-    console.log('spotify Error', errorState);
+    // console.log('spotify Error', errorState);
   }, [errorState]);
 
   const play = async (playlist: Playlist) => {
-    if (!device) alert('Device Not Connected');
-    else if (!player) alert('Player Not Connected');
+    if (!device) alert('Device Not Connected'); // eslint-disable-line no-alert
+    else if (!player) alert('Player Not Connected'); // eslint-disable-line no-alert
     else {
       setPlayModel((m) => ({ ...m, currentPlaylist: playlist, isPlaying: true }));
 
