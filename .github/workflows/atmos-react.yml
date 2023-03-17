@@ -1,4 +1,4 @@
-name: github-actions
+name: atmos-react
 run-name: atmos deploy by ${{ github.actor }}
 on: [push]
 jobs:
