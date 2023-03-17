@@ -142,8 +142,7 @@ function PlaylistEdit() {
 
   const onPlaylistDelete = () => {
     const index = playlistGroup.Playlists?.items.findIndex((p) => p?.id === tab) ?? 1;
-		// eslint-disable  @typescript-eslint/no-explicit-any 
-    onPlaylistChange(tab, undefined as any);
+    onPlaylistChange(tab, undefined as never);
     settab(playlistGroup.Playlists?.items[index - 1]?.id as string);
   };
 

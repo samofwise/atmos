@@ -3,9 +3,10 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './components/App';
 import awsExports from './aws-exports';
+import { updateAwsExports } from './utils/awsUtils';
 import reportWebVitals from './reportWebVitals';
 
-Amplify.configure(awsExports);
+Amplify.configure(updateAwsExports(awsExports));
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,

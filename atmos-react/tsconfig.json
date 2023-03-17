@@ -21,15 +21,10 @@
     "jsx": "react-jsx"
   },
   "include": [
-		"*",
-		"**/*",
-    "**/src/*",
-    "src",
-    ".",
-    ".eslintrc.js",
-		"*.json"
+    "**/src/*.*"
   ],
   "exclude": [
-    "Old"
+    "Old",
+    "node_modules"
   ]
 }

@@ -26,6 +26,7 @@ module.exports = {
     project: ['./tsconfig.json'],
     extraFileExtensions: ['.json', '.code-workspace'],
   },
+  ignorePatterns: ['/**/node_modules/*'],
   settings: {
     'import/resolver': { typescript: {} },
     react: { version: 'detect' },

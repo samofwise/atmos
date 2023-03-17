@@ -1,11 +1,9 @@
 import { Authenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
-import { useNavigate } from 'react-router-dom';
 import { styled } from '@mui/material';
 import { Mixins } from '@mui/material/styles';
 
 function SignIn() {
-
   return (
     <CenteredContent>
       <Authenticator>
