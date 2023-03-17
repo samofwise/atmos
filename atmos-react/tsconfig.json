@@ -21,11 +21,13 @@
     "jsx": "react-jsx"
   },
   "include": [
+		"*",
+		"**/*",
     "**/src/*",
     "src",
     ".",
     ".eslintrc.js",
-    "../aws-exports.js",
+		"*.json"
   ],
   "exclude": [
     "Old"

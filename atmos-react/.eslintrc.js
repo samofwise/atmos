@@ -23,7 +23,8 @@ module.exports = {
   parserOptions: {
     // ecmaVersion: 'latest',
     // sourceType: 'module',
-    project: './tsconfig.json',
+    project: ['./tsconfig.json'],
+    extraFileExtensions: ['.json', '.code-workspace'],
   },
   settings: {
     'import/resolver': { typescript: {} },

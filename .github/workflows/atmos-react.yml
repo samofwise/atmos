@@ -1,5 +1,5 @@
 name: atmos-react
-run-name: atmos deploy by ${{ github.actor }}
+run-name: atmos-react build and deploy by ${{ github.actor }}
 on: [push]
 jobs:
   build-and-deploy:

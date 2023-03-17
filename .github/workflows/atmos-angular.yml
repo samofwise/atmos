@@ -1,5 +1,5 @@
-name: github-actions
-run-name: atmos deploy by ${{ github.actor }}
+name: atmos-angular
+run-name: atmos-angular build and deploy by ${{ github.actor }}
 on: [push]
 jobs:
   build-and-deploy:
