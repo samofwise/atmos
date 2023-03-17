@@ -41,6 +41,7 @@ jobs:
         uses: actions/download-artifact@v2.1.1
         with:
           name: atmos
+          path: atmos
 
       - name: Deploy static site to S3 bucket
         uses: jakejarvis/s3-sync-action@master
